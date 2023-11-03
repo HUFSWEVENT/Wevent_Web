@@ -12,6 +12,7 @@
     "@types/react-dom": "^18.2.14",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.18.0",
     "react-scripts": "5.0.1",
     "styled-components": "^6.1.0",
     "twin.macro": "^3.4.0",
@@ -46,6 +47,7 @@
     "@types/styled-components": "^5.1.29",
     "autoprefixer": "^10.4.16",
     "babel-plugin-styled-components": "^2.1.4",
+    "eslint-config-prettier": "^9.0.0",
     "postcss": "^8.4.31",
     "postcss-loader": "^7.3.3",
     "tailwindcss": "^3.3.3"
