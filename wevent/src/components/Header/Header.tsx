@@ -28,7 +28,7 @@ const SearchContainer = styled.div`
 `;
 
 const SearchInput = styled.input`
-  width: 38rem; /* 원하는 너비로 조정하세요. */
+  width: 38rem; 
   height: 1.3rem;
   outline: none;
   border: none;
