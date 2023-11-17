@@ -2,6 +2,8 @@ import { ReactNode } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import Search from './pages/Search';
+import LoginPage from 'pages/account/LoginPage';
+import SignupPage from 'pages/account/SignupPage';
 
 export interface RouteProps {
   path: string;
@@ -10,6 +12,8 @@ export interface RouteProps {
 export const routes: RouteProps[] = [
   { path: '/', element: <Home /> },
   { path: '/search', element: <Search /> },
+  { path: '/account/login', element: <LoginPage /> },
+  { path: '/account/signup', element: <SignupPage /> },
 ];
 const RoutesSetting = () => (
   <Routes>
