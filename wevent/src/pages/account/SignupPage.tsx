@@ -1,14 +1,14 @@
+import SocialLoginSection from 'components/account/SocialLoginSection';
 import Form from 'components/form/Form';
 import React from 'react';
 
 const SignupPage = () => {
   return (
     <article
-      className={`bg-pink-50 w-screen flex flex-col justify-center items-center`}
+      className={`bg-pink-50 flex flex-col justify-center items-center w-[24rem] mx-auto`}
     >
       <section>logo </section>
-      <section>
-        {/* <form></form> */}
+      <section className={`w-full`}>
         <Form
           defaultData={{}}
           formList={[
@@ -59,14 +59,7 @@ const SignupPage = () => {
           ]}
         ></Form>
       </section>
-      <section>
-        <div>다른 서비스로 로그인</div>
-        <div>
-          <div>kakao</div>
-          <div>google</div>
-        </div>
-        <div>또는</div>
-      </section>
+      <SocialLoginSection></SocialLoginSection>
     </article>
   );
 };

@@ -54,6 +54,7 @@ export const FormInput = ({
         helperText={error?.text}
         size="small"
         margin="normal"
+        fullWidth
         {...field}
       />
     </>
