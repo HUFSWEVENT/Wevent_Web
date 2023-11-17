@@ -28,7 +28,7 @@ const SearchContainer = styled.div`
 `;
 
 const SearchInput = styled.input`
-  width: 38rem; 
+  width: 38rem;
   height: 1.3rem;
   outline: none;
   border: none;
