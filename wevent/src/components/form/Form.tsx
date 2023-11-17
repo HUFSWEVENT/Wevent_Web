@@ -15,6 +15,7 @@ interface props {
     additionalFieldInfo?: {
       label: string;
       inputType: 'text' | 'number' | 'password';
+      icon?: any;
     } | null;
   }[];
 }

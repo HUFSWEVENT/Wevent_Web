@@ -13,8 +13,9 @@ interface props {
     text: string;
   } | null;
   additionalFieldInfo?: {
-    label: string;
-    inputType: 'text' | 'number' | 'password';
+    label?: string;
+    inputType?: 'text' | 'number' | 'password';
+    icon?: any;
   } | null;
 }
 
@@ -34,34 +35,38 @@ const FormController = ({
         // key={key}
         name={name}
         rules={{ required: required ?? true }}
-        render={
-          ({ field }) => {
-            if (fieldType === 'input') {
-              return (
-                <FormInput
-                  field={field}
-                  placeholder={placeholder}
-                  disabled={disabled}
-                  label={additionalFieldInfo ? additionalFieldInfo.label : ''}
-                  inputType={
-                    additionalFieldInfo ? additionalFieldInfo.inputType : 'text'
-                  }
-                  name={name}
-                  required={required}
-                  defaultValue={defaultValue}
-                  error={null}
-                ></FormInput>
-              );
-            } else {
-              return <div></div>;
-            }
+        render={({ field }) => {
+          if (fieldType === 'input') {
+            return (
+              <FormInput
+                field={field}
+                placeholder={placeholder}
+                disabled={disabled}
+                label={
+                  additionalFieldInfo && additionalFieldInfo.label
+                    ? additionalFieldInfo.label
+                    : ''
+                }
+                inputType={
+                  additionalFieldInfo && additionalFieldInfo.inputType
+                    ? additionalFieldInfo.inputType
+                    : 'text'
+                }
+                name={name}
+                required={required}
+                defaultValue={defaultValue}
+                error={null}
+                icon={
+                  additionalFieldInfo && additionalFieldInfo.icon
+                    ? additionalFieldInfo.icon
+                    : null
+                }
+              ></FormInput>
+            );
+          } else {
+            return <div></div>;
           }
-          // <FormSelect
-          //   data={data}
-          //   field={field}
-          //   disabled={data.disabled ?? false}
-          // ></FormSelect>
-        }
+        }}
       />
     </div>
   );
