@@ -1,4 +1,6 @@
 import TextField from '@mui/material/TextField';
+import { styled } from 'styled-components';
+import tw from 'twin.macro';
 
 interface props {
   field: any;
@@ -14,6 +16,19 @@ interface props {
   } | null;
 }
 
+const StyledTextField = styled(TextField)`
+  & {
+    .MuiFormLabel-root {
+      color: #ccc;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .MuiInputBase-root {
+      ${tw`border-[#72787E] rounded-[0]`}
+    }
+  }
+`;
+
 export const FormInput = ({
   field,
   name,
@@ -27,7 +42,7 @@ export const FormInput = ({
 }: props) => {
   return (
     <>
-      <TextField
+      <StyledTextField
         id={name}
         label={label}
         variant={'outlined'}
