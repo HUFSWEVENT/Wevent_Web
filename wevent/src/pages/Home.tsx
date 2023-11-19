@@ -6,7 +6,8 @@ import Header from '../components/Header/Header';
 import Wrapper from 'components/Container/Wrapper';
 import PostCardContainer from '../components/Container/PostCardContainer';
 import Post from '../data/Post.json';
-import EventListText from 'components/EventListText';
+import EventList from 'components/EventListText';
+import Carousel from '../components/Carousel';
 
 function Home() {
   const navigate = useNavigate();
@@ -22,8 +23,9 @@ function Home() {
         >
           test 클릭 서치페이지 이동
         </div>
+        <Carousel />
 
-        <EventListText />
+        <EventList />
         <PostCardContainer>
           {Post.map(({ id, img, dday, title, type, host, view }) => {
             return (
