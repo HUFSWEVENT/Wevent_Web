@@ -1,20 +1,20 @@
 import styled from 'styled-components';
 import React, { ReactNode } from 'react';
 
-interface RankCardContainerProps {
+interface PostCardContainerProps {
   children: ReactNode;
 }
 
-const RankCardContainerDiv = styled.div`
+const PostCardContainerDiv = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr); 
+  grid-template-rows: repeat(4, 1fr);
   gap: 3rem;
   margin: auto;
 `;
 
-export default function RankCardContainer({
+export default function PostCardContainer({
   children,
-}: RankCardContainerProps) {
-  return <RankCardContainerDiv>{children}</RankCardContainerDiv>;
+}: PostCardContainerProps) {
+  return <PostCardContainerDiv>{children}</PostCardContainerDiv>;
 }

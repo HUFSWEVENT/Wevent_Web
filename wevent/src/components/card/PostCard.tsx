@@ -23,13 +23,13 @@ const Image = styled.img`
 `;
 
 const TextContainer = styled.div`
-  text-align: left; /* 텍스트 왼쪽 정렬 */
+  text-align: left;
 `;
 
 const Text1 = styled.p`
   font-size: 16px;
   color: #333;
-  text-align: right; /* 텍스트 1 오른쪽 정렬 */
+  text-align: right;
   margin-bottom: 8px;
 `;
 
@@ -51,16 +51,16 @@ const Text4 = styled.p`
   font-size: 14px;
   color: #666;
   display: flex;
-  justify-content: space-between; /* 텍스트 5의 내부 요소들 사이에 공간 분배 */
+  justify-content: space-between;
 `;
 
 const HostText = styled.span`
-  flex-basis: 65%; /* 호스트 텍스트의 너비를 조절 */
+  flex-basis: 65%;
 `;
 
 const ViewText = styled.span`
-  flex-basis: 30%; /* 뷰 텍스트의 너비를 조절 */
-  text-align: right; /* 뷰 텍스트 오른쪽 정렬 */
+  flex-basis: 30%;
+  text-align: right;
 `;
 
 export default function PostCard({
