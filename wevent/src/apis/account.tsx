@@ -16,3 +16,15 @@ export const postSignUpApi = async (reqBody: object) => {
     });
   return data;
 };
+
+export const postLoginApi = async (reqBody: object) => {
+  const data = await authAPI
+    .post(`/login`, reqBody)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      return error.response.data;
+    });
+  return data;
+};
