@@ -1,46 +1,78 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-const EventListLeftContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
-  margin-bottom: 2rem;
-`;
+const EventListContainer = styled.div``;
 
-const EventListRightContainer = styled.div`
-  text-align: right;
-`;
+const EventDetailsContainer = styled.div`
+  display: flex;
+  align-items: center;
 
-const List = styled.div`
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: left;
+  /* EventDetailsContainer에 호버 시 스타일 추가 */
+  &:hover {
+    cursor: pointer;
+  }
+`;
+const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+
+  /* EventDetailsContainer에 호버 시 스타일 추가 */
+  &:hover ${EventDetailsContainer} {
+    cursor: pointer;
+  }
 `;
 
 const MoreEvent = styled.div`
-  font-size: 1rem;
-
-  font-weight: bold;
-  text-align: right;
-`;
-
-const EffectText = styled.div`
-  text-align: left;
+  color: #adb3ba;
   font-size: 1.2rem;
-  color: grey;
+  font-weight: bold;
+
+  /* EventDetailsContainer에 호버 시 스타일 추가 */
+  ${EventDetailsContainer}:hover & {
+    color: #01a0ff;
+  }
 `;
 
-function EventListText() {
+const EventTitle = styled.div`
+  font-size: 1.5rem;
+  font-weight: bold;
+`;
+
+const Text = styled.img`
+  1.3rem;
+  color: #adb3ba;
+  font-weight: bold;
+`;
+
+const EventImage = styled.img`
+  margin-left: 5px;
+  transition: transform 0.3s ease-in-out;
+
+  /* EventDetailsContainer에 호버 시 스타일 추가 */
+  ${EventDetailsContainer}:hover & {
+    content: url('Images/arrow_circle_hover.png');
+  }
+`;
+
+const EventDropdown = styled.select``;
+
+const EventListText = () => {
   return (
-    <EventListLeftContainer>
-      <List>행사리스트</List>
-      <MoreEvent>행사 더보기</MoreEvent>
-      <EventListRightContainer>
-        <EffectText>행사에 협찬하고 홍보 효과를 누리세요!</EffectText>
-      </EventListRightContainer>
-    </EventListLeftContainer>
+    <>
+      <Container>
+        <EventListContainer>
+          <EventTitle>행사리스트</EventTitle>
+        </EventListContainer>
+
+        <EventDetailsContainer>
+          <MoreEvent>행사더보기</MoreEvent>
+          <EventImage src="Images/arrow_circle.png" alt="행사 더보기" />
+        </EventDetailsContainer>
+      </Container>
+    </>
   );
-}
+};
 
 export default EventListText;
