@@ -1,3 +1,4 @@
+import { postSignUpApi } from 'apis/account';
 import SocialLoginSection from 'components/account/SocialLoginSection';
 import Form from 'components/form/Form';
 import LockIcon from 'components/icon/LockIcon';
@@ -5,12 +6,15 @@ import MessageIcon from 'components/icon/MessageIcon';
 import UserIcon from 'components/icon/UserIcon';
 
 const SignupPage = () => {
+  const signUpHandler = async (result: object) => {
+    const response = postSignUpApi(result);
+  };
   return (
     <article
       className={`bg-pink-50 flex flex-col justify-center items-center w-[24rem] mx-auto`}
     >
       <section>logo </section>
-      <section className={`w-full`}>
+      <section className={`w-full flex flex-col`}>
         <Form
           defaultData={{}}
           formList={[
@@ -63,6 +67,7 @@ const SignupPage = () => {
               },
             },
           ]}
+          onSubmitEvent={signUpHandler}
         ></Form>
       </section>
       <SocialLoginSection></SocialLoginSection>
