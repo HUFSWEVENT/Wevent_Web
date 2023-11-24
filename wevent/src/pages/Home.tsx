@@ -16,13 +16,6 @@ function Home() {
     <>
       <Header />
       <Wrapper>
-        <div
-          onClick={() => {
-            navigate('/search');
-          }}
-        >
-          test 클릭 서치페이지 이동
-        </div>
         <Carousel />
 
         <EventList />
