@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const FooterContainer = styled.div`
-  background-color: lightgrey;
-  padding: 2rem 0 4rem 0;
+  background-color: #b5b5b5;
+  padding: 2rem 0 2rem 0;
   display: grid;
   place-items: center;
   margin-top: 10rem;
@@ -29,11 +29,11 @@ const FooterItems = styled.div`
 
 const FooterItemsH2 = styled.h2`
   margin-bottom: 16px;
-  color: grey;
+  color: white;
 `;
 
 const FooterItemsA = styled.p`
-  color: darkgrey;
+  color: white;
   text-decoration: none;
   margin-bottom: 8px;
 `;
