@@ -64,25 +64,32 @@ const BulletPoint = styled.div<{ active?: boolean }>`
 export default function Carousel({ active }: CarouselProps) {
   const [images, setImages] = useState(dummyImg.images);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isMouseOver, setIsMouseOver] = useState(false);
 
   const nextImage = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1,
-    );
+    if (!isMouseOver) {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1,
+      );
+    }
   };
 
   const prevImage = () => {
-    setCurrentImageIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1,
-    );
+    if (!isMouseOver) {
+      setCurrentImageIndex((prevIndex) =>
+        prevIndex === 0 ? images.length - 1 : prevIndex - 1,
+      );
+    }
   };
 
   const handleMouseEnter = () => {
+    setIsMouseOver(true);
     document.getElementById('prevButton')!.style.opacity = '1';
     document.getElementById('nextButton')!.style.opacity = '1';
   };
 
   const handleMouseLeave = () => {
+    setIsMouseOver(false);
     document.getElementById('prevButton')!.style.opacity = '0';
     document.getElementById('nextButton')!.style.opacity = '0';
   };
@@ -93,7 +100,7 @@ export default function Carousel({ active }: CarouselProps) {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [currentImageIndex]);
+  }, [currentImageIndex, isMouseOver]);
 
   return (
     <>
