@@ -1,80 +1,50 @@
 import React from 'react';
 import styled from 'styled-components';
+import BlueButton from '../button/BlueButton';
+import SearchBar from './SearchBar';
 
 const HeaderContainer = styled.div`
   height: 12rem;
   background-color: white;
   align-items: center;
   display: flex;
+  margin: 0 auto;
+  max-width: 89rem;
 `;
 
-const Logo = styled.img`
-  margin-left: 10rem;
-`;
-const Img = styled.img`
-  width: 1.3rem;
-  height: 1.3rem;
-  margin-right: 1rem;
-`;
-const SearchContainer = styled.div`
-  display: flex;
-  align-items: center;
-  margin-left: 5rem;
-  border: 1px solid #ccc;
-  border-radius: 3rem;
-  padding: 1rem;
-  margin-right: 4rem;
-`;
+const Logo = styled.img``;
 
-const SearchInput = styled.input`
-  width: 38rem;
-  height: 1.3rem;
-  outline: none;
-  border: none;
-  font-size: 1.2rem;
-`;
-
-const Register = styled.button`
-  border-radius: 10px;
-  color: white;
-  background-color: #01a0ff;
-  width: 8rem;
-  height: 2.2rem;
+const Login = styled.button`
+  color: black;
   font-weight: bold;
   font-size: 1rem;
   border: none;
-  margin-right: 13rem;
-`;
-
-const Rogin = styled.button`
-  color: black;
-  font-weight: bold;
-  font-size: 1.1rem;
-  border: none;
+  margin-left: 8rem;
   margin-right: 2rem;
   background-color: white;
+  cursor: pointer;
 `;
 const Signup = styled.button`
   color: black;
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1rem;
   border: none;
   background-color: white;
+  cursor: pointer;
 `;
 
 const Header = () => {
+  const handleSearch = (searchTerm: string) => {
+    console.log('검색:', searchTerm);
+  };
   return (
     <HeaderContainer>
       <Logo src="Images/Logo.png" alt="logo" />
-      <SearchContainer>
-        <Img src="Images/search-icon.png" alt="searchicon" />
-        <SearchInput
-          type="text"
-          placeholder="협찬하고 싶은 행사를 찾아보세요."
-        />
-      </SearchContainer>
-      <Register>무료 행사 등록</Register>
-      <Rogin>로그인</Rogin>
+
+      <SearchBar onSearch={handleSearch} />
+
+      <BlueButton>무료 행사 등록</BlueButton>
+      <Login>로그인</Login>
       <Signup>회원가입</Signup>
     </HeaderContainer>
   );

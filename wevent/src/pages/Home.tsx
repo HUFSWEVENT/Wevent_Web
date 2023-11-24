@@ -11,23 +11,16 @@ import Carousel from '../components/Carousel';
 
 function Home() {
   const navigate = useNavigate();
-
+  const postsToShow = Post.slice(0, 16);
   return (
     <>
       <Header />
       <Wrapper>
-        <div
-          onClick={() => {
-            navigate('/search');
-          }}
-        >
-          test 클릭 서치페이지 이동
-        </div>
         <Carousel />
 
         <EventList />
         <PostCardContainer>
-          {Post.map(({ id, img, dday, title, type, host, view }) => {
+          {postsToShow.map(({ id, img, dday, title, type, host, view }) => {
             return (
               <PostCard
                 key={id}

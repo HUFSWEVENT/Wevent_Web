@@ -7,8 +7,7 @@ interface PostCardContainerProps {
 
 const PostCardContainerDiv = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   gap: 3rem;
   margin: auto;
 `;
