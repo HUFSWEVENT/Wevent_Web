@@ -11,7 +11,7 @@ import Carousel from '../components/Carousel';
 
 function Home() {
   const navigate = useNavigate();
-
+  const postsToShow = Post.slice(0, 16);
   return (
     <>
       <Header />
@@ -27,7 +27,7 @@ function Home() {
 
         <EventList />
         <PostCardContainer>
-          {Post.map(({ id, img, dday, title, type, host, view }) => {
+          {postsToShow.map(({ id, img, dday, title, type, host, view }) => {
             return (
               <PostCard
                 key={id}
