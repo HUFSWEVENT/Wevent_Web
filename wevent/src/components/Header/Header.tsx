@@ -5,7 +5,6 @@ const HeaderContainer = styled.div`
   height: 12rem;
   background-color: white;
   align-items: center;
-  margin-bottom: 5rem;
   display: flex;
 `;
 
@@ -28,7 +27,7 @@ const SearchContainer = styled.div`
 `;
 
 const SearchInput = styled.input`
-  width: 38rem; 
+  width: 38rem;
   height: 1.3rem;
   outline: none;
   border: none;
