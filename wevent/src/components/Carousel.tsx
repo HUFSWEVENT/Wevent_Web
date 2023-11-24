@@ -9,6 +9,7 @@ interface CarouselProps {
 const StyledCarouselWrapper = styled.div`
   position: relative;
   width: 100%;
+  height: 350px;
   max-width: 1200px;
   margin: 0 auto;
   overflow: hidden;
