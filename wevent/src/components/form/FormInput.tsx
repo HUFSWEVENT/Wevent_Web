@@ -49,11 +49,11 @@ export const FormInput = ({
           endAdornment: (
             <InputAdornment
               position="end"
-              className={`absolute bg-yellow-100 w-full flex justify-between !m-0`}
+              className={`absolute w-full flex justify-between !m-0`}
             >
               <div className={`ml-2`}>{icon && icon}</div>
               <div
-                className={`mr-2`}
+                className={`mr-2 w-[4rem] flex items-center justify-center bg-[#00A0FF] p-1 text-white font-bold cursor-pointer`}
                 onClick={() => button && button.clickEvent()}
               >
                 {button && button.content}
