@@ -4,16 +4,34 @@ import { formInfoType } from 'components/form/Form';
 import LockIcon from 'components/icon/LockIcon';
 import MessageIcon from 'components/icon/MessageIcon';
 import UserIcon from 'components/icon/UserIcon';
+import { useNavigate } from 'react-router-dom';
+
+export type signupFormType = {
+  username: string;
+  email: string;
+  password: string;
+  password2?: string;
+};
 
 const SignupPage = () => {
+  const navigate = useNavigate();
+
   const signUpHandler = async (result: object) => {
-    const response = postSignUpApi(result);
+    const signupFormResult = result as signupFormType;
+    delete signupFormResult['password2'];
+    const response = await postSignUpApi(signupFormResult);
+
+    if (response && (response.status === 200 || response.status === 201)) {
+      navigate('/account/login');
+    } else {
+      alert('회원가입에 실패했습니다.');
+    }
   };
 
   const formList: formInfoType[] = [
     {
       fieldType: 'input',
-      name: 'name',
+      name: 'username',
       placeholder: '성함',
       required: true,
       error: { text: '성함을 입력하세요' },

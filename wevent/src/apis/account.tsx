@@ -1,18 +1,18 @@
 import axios from 'axios';
 
 export const authAPI = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_ENV_HOST}`,
+  baseURL: `https://wevent-api-nvcxh.run.goorm.site`,
   withCredentials: true,
 });
 
 export const postSignUpApi = async (reqBody: object) => {
   const data = await authAPI
-    .post(`/signup`, reqBody)
+    .post(`/api/accounts/register/`, reqBody)
     .then((response) => {
-      return response.data;
+      return response;
     })
     .catch((error) => {
-      return error.response.data;
+      return error.response;
     });
   return data;
 };
