@@ -43,12 +43,12 @@ export const patchValidateEmailApi = async (reqBody: object) => {
 
 export const postLoginApi = async (reqBody: object) => {
   const data = await authAPI
-    .post(`/login`, reqBody)
+    .post(`/api/accounts/auth/`, reqBody)
     .then((response) => {
-      return response.data;
+      return response;
     })
     .catch((error) => {
-      return error.response.data;
+      return error.response;
     });
   return data;
 };
