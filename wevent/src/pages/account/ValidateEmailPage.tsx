@@ -50,6 +50,13 @@ const ValidateEmailPage = () => {
           },
         },
       ]}
+      notification={{
+        title: '이메일 인증',
+        content: [
+          '인증메일을 전송하였습니다.',
+          '메일을 확인하고 인증 번호를 입력해주세요.',
+        ],
+      }}
       onSubmitEvent={validateEmailHandler}
     ></AccountPage>
   );
