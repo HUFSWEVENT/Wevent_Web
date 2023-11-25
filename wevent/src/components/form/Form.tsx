@@ -14,6 +14,7 @@ export type formInfoType = {
     label: string;
     inputType: 'text' | 'number' | 'password';
     icon?: any;
+    button?: { content: string; clickEvent: () => void };
   } | null;
 };
 

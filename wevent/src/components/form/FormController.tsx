@@ -16,6 +16,7 @@ interface props {
     label?: string;
     inputType?: 'text' | 'number' | 'password';
     icon?: any;
+    button?: { content: string; clickEvent: () => void };
   } | null;
 }
 
@@ -32,7 +33,6 @@ const FormController = ({
   return (
     <div>
       <Controller
-        // key={key}
         name={name}
         rules={{ required: required ?? true }}
         render={({ field }) => {
@@ -59,6 +59,11 @@ const FormController = ({
                 icon={
                   additionalFieldInfo && additionalFieldInfo.icon
                     ? additionalFieldInfo.icon
+                    : null
+                }
+                button={
+                  additionalFieldInfo && additionalFieldInfo.button
+                    ? additionalFieldInfo.button
                     : null
                 }
               ></FormInput>

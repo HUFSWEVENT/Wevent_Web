@@ -6,7 +6,8 @@ interface props {
   name: string;
   label: string;
   placeholder: string;
-  icon: any;
+  icon: any | null;
+  button: { content: string; clickEvent: () => void } | null;
   inputType: 'text' | 'number' | 'password';
   required: boolean;
   disabled: boolean;
@@ -22,6 +23,7 @@ export const FormInput = ({
   label,
   placeholder,
   icon,
+  button,
   inputType = 'text',
   required = false,
   disabled = false,
@@ -45,8 +47,17 @@ export const FormInput = ({
         fullWidth
         InputProps={{
           endAdornment: (
-            <InputAdornment position="end" className={`absolute`}>
-              {icon}
+            <InputAdornment
+              position="end"
+              className={`absolute bg-yellow-100 w-full flex justify-between !m-0`}
+            >
+              <div className={`ml-2`}>{icon && icon}</div>
+              <div
+                className={`mr-2`}
+                onClick={() => button && button.clickEvent()}
+              >
+                {button && button.content}
+              </div>
             </InputAdornment>
           ),
         }}

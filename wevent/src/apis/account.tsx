@@ -17,6 +17,30 @@ export const postSignUpApi = async (reqBody: object) => {
   return data;
 };
 
+export const postValidateCodeApi = async (reqBody: object) => {
+  const data = await authAPI
+    .post(`/api/accounts/auth/email/`, reqBody)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      return error.response;
+    });
+  return data;
+};
+
+export const patchValidateEmailApi = async (reqBody: object) => {
+  const data = await authAPI
+    .patch(`/api/accounts/auth/email/`, reqBody)
+    .then((response) => {
+      return response;
+    })
+    .catch((error) => {
+      return error.response;
+    });
+  return data;
+};
+
 export const postLoginApi = async (reqBody: object) => {
   const data = await authAPI
     .post(`/login`, reqBody)
