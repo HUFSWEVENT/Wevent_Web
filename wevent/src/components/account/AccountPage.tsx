@@ -5,6 +5,11 @@ interface props {
   defaultData: { [key: string]: string };
   formList: formInfoType[];
   notification?: { title: string; content: string[] } | null;
+  buttonList: {
+    content: string;
+    clickEvent?: () => void;
+    type?: 'button' | 'submit';
+  }[];
   onSubmitEvent: (result: object) => void;
 }
 
@@ -13,8 +18,8 @@ const AccountPage = ({
   formList,
   notification = null,
   onSubmitEvent,
+  buttonList,
 }: props) => {
-  console.log(notification);
   return (
     <article
       className={`flex flex-col justify-center items-center w-[24rem] mx-auto h-screen`}
@@ -41,6 +46,7 @@ const AccountPage = ({
           defaultData={defaultData}
           formList={formList}
           onSubmitEvent={onSubmitEvent}
+          buttonList={buttonList}
         ></Form>
       </section>
       {/* <SocialLoginSection></SocialLoginSection> */}

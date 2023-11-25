@@ -3,9 +3,10 @@ import AccountPage from 'components/account/AccountPage';
 import { formInfoType } from 'components/form/Form';
 import LockIcon from 'components/icon/LockIcon';
 import MessageIcon from 'components/icon/MessageIcon';
-import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
+  const navigate = useNavigate();
   const loginHandler = async (result: object) => {
     const response = postLoginApi(result);
   };
@@ -41,6 +42,19 @@ const LoginPage = () => {
       defaultData={{}}
       formList={formList}
       onSubmitEvent={loginHandler}
+      buttonList={[
+        {
+          content: '로그인',
+          type: 'submit',
+        },
+        {
+          content: '회원가입',
+          clickEvent: () => {
+            navigate('/account/login');
+          },
+          type: 'submit',
+        },
+      ]}
     ></AccountPage>
   );
 };

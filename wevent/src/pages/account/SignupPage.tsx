@@ -84,6 +84,12 @@ const SignupPage = () => {
       defaultData={{}}
       formList={formList}
       onSubmitEvent={signUpHandler}
+      buttonList={[
+        {
+          content: '가입하기',
+          type: 'submit',
+        },
+      ]}
     ></AccountPage>
   );
 };

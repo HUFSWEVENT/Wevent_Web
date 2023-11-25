@@ -58,6 +58,12 @@ const ValidateEmailPage = () => {
         ],
       }}
       onSubmitEvent={validateEmailHandler}
+      buttonList={[
+        {
+          content: '가입하기',
+          type: 'submit',
+        },
+      ]}
     ></AccountPage>
   );
 };

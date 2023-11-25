@@ -22,9 +22,14 @@ interface props {
   defaultData: { [key: string]: string };
   formList: formInfoType[];
   onSubmitEvent: (result: object) => void;
+  buttonList: {
+    content: string;
+    clickEvent?: () => void;
+    type?: 'button' | 'submit';
+  }[];
 }
 
-const Form = ({ defaultData, formList, onSubmitEvent }: props) => {
+const Form = ({ defaultData, formList, onSubmitEvent, buttonList }: props) => {
   const methods = useForm({
     defaultValues: defaultData ?? {},
     mode: 'onChange',
@@ -34,7 +39,7 @@ const Form = ({ defaultData, formList, onSubmitEvent }: props) => {
     <FormProvider {...methods}>
       <form
         onSubmit={methods.handleSubmit(onSubmitEvent)}
-        className={`w-full flex flex-col`}
+        className={`w-full flex flex-col gap-10`}
       >
         {formList.map((form, index) => {
           return (
@@ -51,7 +56,20 @@ const Form = ({ defaultData, formList, onSubmitEvent }: props) => {
             ></FormController>
           );
         })}
-        <button>제출</button>
+
+        <section className={`flex flex-col items-center`}>
+          {buttonList.map((button, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                button.clickEvent && button.clickEvent();
+              }}
+              type={button.type ?? 'button'}
+            >
+              {button.content}
+            </button>
+          ))}
+        </section>
       </form>
     </FormProvider>
   );
