@@ -22,7 +22,7 @@ const SignupPage = () => {
     const response = await postSignUpApi(signupFormResult);
 
     if (response && (response.status === 200 || response.status === 201)) {
-      navigate('/account/login');
+      navigate('/account/validate-email');
     } else {
       alert('회원가입에 실패했습니다.');
     }
