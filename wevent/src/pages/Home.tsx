@@ -10,7 +10,7 @@ import Carousel from '../components/Carousel';
 import DropDownButton from 'components/button/DropDownButton';
 import MoreEventButton from 'components/button/MoreEventButton';
 import styled from 'styled-components';
-
+import theme from 'styles/theme';
 const TextContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -24,12 +24,11 @@ const EventTitle = styled.div`
 `;
 const EventTitle2 = styled.div`
   font-size: 1.2rem;
-  color: #adb3ba;
+  color: ${theme.colors['light-grey']};
   font-weight: bold;
 `;
 
 function Home() {
-  const navigate = useNavigate();
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
