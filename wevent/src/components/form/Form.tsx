@@ -27,17 +27,26 @@ const Form = ({ defaultData, formList, onSubmitEvent, buttonList }: props) => {
       >
         {formList.map((form, index) => {
           return (
-            <FormController
-              key={index}
-              fieldType={form.fieldType}
-              required={form.required ?? false}
-              name={form.name}
-              placeholder={form.placeholder}
-              disabled={form.disabled ?? false}
-              defaultValue={defaultData[form.name]}
-              error={form.error ?? null}
-              additionalFieldInfo={form.additionalFieldInfo}
-            ></FormController>
+            <div key={index} className={`flex gap-2`}>
+              {form.title && (
+                <div className={`font-bold text-xl`}>
+                  {form.title}
+                  <span className={`text-[#01A0FF]`}>
+                    {form.required ? '*' : ''}
+                  </span>
+                </div>
+              )}
+              <FormController
+                fieldType={form.fieldType}
+                required={form.required ?? false}
+                name={form.name}
+                placeholder={form.placeholder}
+                disabled={form.disabled ?? false}
+                defaultValue={defaultData[form.name]}
+                error={form.error ?? null}
+                additionalFieldInfo={form.additionalFieldInfo}
+              ></FormController>
+            </div>
           );
         })}
 

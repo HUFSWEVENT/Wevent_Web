@@ -1,5 +1,6 @@
 export type formFieldType = 'input' | 'select';
 export type formInfoType = {
+  title?: string;
   fieldType: formFieldType;
   name: string;
   placeholder: string;
