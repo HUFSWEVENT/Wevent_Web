@@ -1,10 +1,10 @@
 import { postSignUpApi } from 'apis/account';
 import AccountPage from 'components/account/AccountPage';
-import { formInfoType } from 'components/form/Form';
 import LockIcon from 'components/icon/LockIcon';
 import MessageIcon from 'components/icon/MessageIcon';
 import UserIcon from 'components/icon/UserIcon';
 import { useNavigate } from 'react-router-dom';
+import { formInfoType } from 'type/formType';
 
 export type signupFormType = {
   username: string;

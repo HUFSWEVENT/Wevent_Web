@@ -1,22 +1,6 @@
 import { FormProvider, useForm } from 'react-hook-form';
 import FormController from './FormController';
-
-export type formInfoType = {
-  fieldType: 'input';
-  name: string;
-  placeholder: string;
-  required?: boolean;
-  disabled?: boolean;
-  error?: {
-    text: string;
-  } | null;
-  additionalFieldInfo?: {
-    label: string;
-    inputType: 'text' | 'number' | 'password';
-    icon?: any;
-    button?: { content: string; clickEvent: () => void };
-  } | null;
-};
+import { formInfoType } from 'type/formType';
 
 interface props {
   defaultData: { [key: string]: string };

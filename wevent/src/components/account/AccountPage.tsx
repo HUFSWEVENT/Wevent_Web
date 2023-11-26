@@ -1,5 +1,6 @@
-import Form, { formInfoType } from 'components/form/Form';
+import Form from 'components/form/Form';
 import SocialLoginSection from './SocialLoginSection';
+import { formInfoType } from 'type/formType';
 
 interface props {
   defaultData: { [key: string]: string };

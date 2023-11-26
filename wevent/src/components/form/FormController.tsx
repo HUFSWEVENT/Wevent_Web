@@ -1,9 +1,10 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
 import { FormInput } from './FormInput';
+import { formFieldType } from 'type/formType';
 
 interface props {
-  fieldType: 'input';
+  fieldType: formFieldType;
   required: boolean;
   name: string;
   placeholder: string;
