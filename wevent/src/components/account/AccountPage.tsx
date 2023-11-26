@@ -1,20 +1,15 @@
-import Form, { formInfoType } from 'components/form/Form';
+import Form from 'components/form/Form';
 import SocialLoginSection from './SocialLoginSection';
+import { formButton, formInfoType } from 'type/formType';
 
 interface props {
-  defaultData: { [key: string]: string };
   formList: formInfoType[];
   notification?: { title: string; content: string[] } | null;
-  buttonList: {
-    content: string;
-    clickEvent?: () => void;
-    type?: 'button' | 'submit';
-  }[];
+  buttonList: formButton[];
   onSubmitEvent: (result: object) => void;
 }
 
 const AccountPage = ({
-  defaultData,
   formList,
   notification = null,
   onSubmitEvent,
@@ -43,7 +38,6 @@ const AccountPage = ({
 
       <section className={`w-full flex flex-col mb-[2rem]`}>
         <Form
-          defaultData={defaultData}
           formList={formList}
           onSubmitEvent={onSubmitEvent}
           buttonList={buttonList}

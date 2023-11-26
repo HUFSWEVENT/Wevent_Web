@@ -43,7 +43,6 @@ export const FormInput = ({
         error={error}
         helperText={error?.text}
         size="small"
-        margin="normal"
         fullWidth
         InputProps={{
           endAdornment: (
@@ -53,7 +52,11 @@ export const FormInput = ({
             >
               <div className={`ml-2`}>{icon && icon}</div>
               <div
-                className={`mr-2 w-[4rem] flex items-center justify-center bg-[#00A0FF] p-1 text-white font-bold cursor-pointer`}
+                className={`${
+                  button
+                    ? 'mr-2 w-[4rem] flex items-center justify-center bg-[#00A0FF] p-1 text-white font-bold cursor-pointer'
+                    : ''
+                }`}
                 onClick={() => button && button.clickEvent()}
               >
                 {button && button.content}

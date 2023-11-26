@@ -34,7 +34,6 @@ const ValidateEmailPage = () => {
 
   return (
     <AccountPage
-      defaultData={{}}
       formList={[
         {
           fieldType: 'input',
