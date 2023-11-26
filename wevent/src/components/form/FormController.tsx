@@ -142,7 +142,7 @@ const FormController = ({
                   width={
                     additionalFieldInfo && additionalFieldInfo.width
                       ? additionalFieldInfo.width
-                      : ''
+                      : '100%'
                   }
                 ></FormTextArea>
               );

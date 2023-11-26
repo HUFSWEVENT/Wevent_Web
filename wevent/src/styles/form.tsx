@@ -16,7 +16,7 @@ export const StyledTextField = styled(TextField)`
       padding-left: 0;
     }
     .MuiInputBase-root {
-      ${tw`border-[#72787E] rounded-[0]`}
+      ${tw`border-[#72787E] rounded-[0] bg-white`}
       input {
         ${tw`pl-10`}
       }
@@ -27,7 +27,7 @@ export const StyledTextField = styled(TextField)`
 export const StyledSelect = styled(FormControl)<{ width: string }>`
   & {
     .MuiInputBase-root {
-      ${tw`border-[#72787E] rounded-[0] h-[3rem]`}
+      ${tw`border-[#72787E] rounded-[0] h-[3rem] bg-white`}
       input {
         ${tw`pl-10`}
       }
@@ -39,9 +39,6 @@ export const StyledSelect = styled(FormControl)<{ width: string }>`
 export const StyledTextArea = styled(BaseTextareaAutosize)<{ width: string }>`
   & {
     ${tw`border border-solid border-[#72787E] rounded-[0] h-[3rem] p-6`}
-    input {
-      ${tw`pl-10`}
-    }
     width: ${(props) => props.width};
   }
 `;

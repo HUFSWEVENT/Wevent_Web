@@ -1,4 +1,3 @@
-import React from 'react';
 import { StyledTextArea } from 'styles/form';
 
 interface props {
