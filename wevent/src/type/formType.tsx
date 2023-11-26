@@ -9,12 +9,14 @@ export type formInfoType = {
   error?: {
     text: string;
   } | null;
-  additionalFieldInfo?: {
-    label: string;
-    inputType: 'text' | 'number' | 'password';
-    icon?: any;
-    button?: { content: string; clickEvent: () => void };
-  } | null;
+  additionalFieldInfo?: additionalFieldInfo | null;
+};
+export type additionalFieldInfo = {
+  label?: string;
+  inputType?: 'text' | 'number' | 'password';
+  icon?: any;
+  button?: { content: string; clickEvent: () => void };
+  menuItemList?: { value: string; label: string }[];
 };
 export type formButton = {
   content: string;

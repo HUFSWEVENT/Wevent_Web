@@ -37,7 +37,7 @@ const Form = ({
           return (
             <div key={index} className={`flex gap-2 w-full items-center`}>
               {form.title && (
-                <div className={`font-bold text-xl`}>
+                <div className={`font-bold text-xl min-w-[10rem]`}>
                   {form.title}
                   <span className={`text-[#01A0FF]`}>
                     {form.required ? '*' : ''}

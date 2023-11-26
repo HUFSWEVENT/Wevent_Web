@@ -1,7 +1,8 @@
 import React from 'react';
 import { Controller } from 'react-hook-form';
 import { FormInput } from './FormInput';
-import { formFieldType } from 'type/formType';
+import { additionalFieldInfo, formFieldType } from 'type/formType';
+import FormSelect from './FormSelect';
 
 interface props {
   fieldType: formFieldType;
@@ -13,12 +14,7 @@ interface props {
   error: {
     text: string;
   } | null;
-  additionalFieldInfo?: {
-    label?: string;
-    inputType?: 'text' | 'number' | 'password';
-    icon?: any;
-    button?: { content: string; clickEvent: () => void };
-  } | null;
+  additionalFieldInfo?: additionalFieldInfo | null;
 }
 
 const FormController = ({
@@ -42,7 +38,6 @@ const FormController = ({
               <FormInput
                 field={field}
                 placeholder={placeholder}
-                disabled={disabled}
                 label={
                   additionalFieldInfo && additionalFieldInfo.label
                     ? additionalFieldInfo.label
@@ -55,6 +50,7 @@ const FormController = ({
                 }
                 name={name}
                 required={required}
+                disabled={disabled}
                 defaultValue={defaultValue}
                 error={null}
                 icon={
@@ -68,6 +64,28 @@ const FormController = ({
                     : null
                 }
               ></FormInput>
+            );
+          } else if (fieldType === 'select') {
+            return (
+              <FormSelect
+                field={field}
+                name={name}
+                label={
+                  additionalFieldInfo && additionalFieldInfo.label
+                    ? additionalFieldInfo.label
+                    : ''
+                }
+                placeholder={placeholder}
+                menuItemList={
+                  additionalFieldInfo && additionalFieldInfo.menuItemList
+                    ? additionalFieldInfo.menuItemList
+                    : [{ value: '', label: '' }]
+                }
+                required={required}
+                disabled={disabled}
+                defaultValue={defaultValue}
+                error={null}
+              ></FormSelect>
             );
           } else {
             return <div></div>;

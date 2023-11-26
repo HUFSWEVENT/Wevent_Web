@@ -1,5 +1,5 @@
 import Form from 'components/form/Form';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { formInfoType } from 'type/formType';
 
@@ -12,7 +12,7 @@ const CreateEventPage = () => {
     {
       title: '행사명',
       fieldType: 'input',
-      name: '행사명',
+      name: 'name',
       placeholder: '행사 주제를 입력해주세요. (최대 20자)',
       required: true,
       disabled: false,
@@ -22,7 +22,7 @@ const CreateEventPage = () => {
     {
       title: '주최사명',
       fieldType: 'input',
-      name: '주최사명',
+      name: 'boss',
       placeholder: '주최사명을 입력해주세요.',
       required: true,
       disabled: false,
@@ -32,14 +32,36 @@ const CreateEventPage = () => {
     {
       title: '주최사 이메일',
       fieldType: 'input',
-      name: '주최사 이메일',
+      name: 'email',
       placeholder: '협찬사와 컨택할 메일을 입력해주세요.',
       required: true,
       disabled: false,
       error: null,
       additionalFieldInfo: null,
     },
+    {
+      title: '행사 규모',
+      fieldType: 'select',
+      name: 'size',
+      placeholder: '예상 참여 인원',
+      required: true,
+      disabled: false,
+      error: null,
+      additionalFieldInfo: {
+        menuItemList: [
+          { value: '50명 이하', label: '50명 이하' },
+          { value: '50명', label: '50명' },
+          { value: '100명', label: '100명' },
+          { value: '150명', label: '150명' },
+          { value: '200명', label: '200명' },
+        ],
+      },
+    },
   ];
+
+  const tempSaveHandler = useCallback(async () => {
+    console.log(methods.getValues());
+  }, [methods]);
 
   return (
     <article className="px-12">
@@ -56,9 +78,7 @@ const CreateEventPage = () => {
             list: [
               {
                 content: '임시저장',
-                clickEvent: () => {
-                  console.log('임시저장');
-                },
+                clickEvent: tempSaveHandler,
                 color: 'gray',
                 width: '9rem',
               },
