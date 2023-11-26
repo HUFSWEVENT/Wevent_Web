@@ -13,6 +13,13 @@ interface PostCardProps {
 const OuterContainer = styled.div`
   display: grid;
   width: 15rem;
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+    border-radius: 0.625rem;
+  }
 `;
 
 const Image = styled.img`
@@ -21,10 +28,12 @@ const Image = styled.img`
   border-radius: 8px;
   cursor: pointer;
   margin-bottom: -5px;
+  padding: 10px;
 `;
 
 const TextContainer = styled.div`
   text-align: left;
+  padding: 10px;
 `;
 
 const Text1 = styled.p`
