@@ -43,7 +43,6 @@ export const FormInput = ({
         error={error}
         helperText={error?.text}
         size="small"
-        margin="normal"
         fullWidth
         InputProps={{
           endAdornment: (

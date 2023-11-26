@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import BlueButton from '../button/BlueButton';
 import SearchBar from './SearchBar';
+import Button from '../button/Button';
 
 const HeaderContainer = styled.div`
   height: 12rem;
@@ -43,7 +43,7 @@ const Header = () => {
 
       <SearchBar onSearch={handleSearch} />
 
-      <BlueButton>무료 행사 등록</BlueButton>
+      <Button>무료 행사 등록</Button>
       <Login>로그인</Login>
       <Signup>회원가입</Signup>
     </HeaderContainer>

@@ -57,6 +57,7 @@ const LoginPage = () => {
             navigate('/account/login');
           },
           type: 'submit',
+          color: 'gray',
         },
       ]}
     ></AccountPage>

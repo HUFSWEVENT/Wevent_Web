@@ -1,6 +1,7 @@
 import { FormProvider, useForm } from 'react-hook-form';
 import FormController from './FormController';
 import { formButton, formInfoType } from 'type/formType';
+import Button from 'components/button/Button';
 
 interface props {
   formClassName?: string;
@@ -30,7 +31,7 @@ const Form = ({
     <FormProvider {...methods}>
       <form
         onSubmit={methods.handleSubmit(onSubmitEvent)}
-        className={`w-full flex flex-col gap-10 ${formClassName}`}
+        className={`w-full flex flex-col gap-12 ${formClassName}`}
       >
         {formList.map((form, index) => {
           return (
@@ -57,17 +58,22 @@ const Form = ({
           );
         })}
 
-        <section className={`flex flex-col items-center`}>
+        <section className={`flex flex-col items-center gap-2`}>
           {buttonList.map((button, index) => (
-            <button
+            <Button
               key={index}
-              onClick={() => {
-                button.clickEvent && button.clickEvent();
-              }}
-              type={button.type ?? 'button'}
+              color={button.color ?? 'blue'}
+              width={button.width ?? '100%'}
             >
-              {button.content}
-            </button>
+              <button
+                onClick={() => {
+                  button.clickEvent && button.clickEvent();
+                }}
+                type={button.type ?? 'button'}
+              >
+                {button.content}
+              </button>
+            </Button>
           ))}
         </section>
       </form>

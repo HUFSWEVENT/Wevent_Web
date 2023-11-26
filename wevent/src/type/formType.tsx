@@ -20,4 +20,6 @@ export type formButton = {
   content: string;
   clickEvent?: () => void;
   type?: 'button' | 'submit';
+  color?: 'blue' | 'gray';
+  width?: string;
 };
