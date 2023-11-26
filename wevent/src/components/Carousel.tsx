@@ -1,6 +1,8 @@
+// Carousel.tsx
+
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import dummyImg from '../data/Slides.json';
+import axios from 'axios';
 
 interface CarouselProps {
   active?: boolean;
@@ -62,7 +64,7 @@ const BulletPoint = styled.div<{ active?: boolean }>`
 `;
 
 export default function Carousel({ active }: CarouselProps) {
-  const [images, setImages] = useState(dummyImg.images);
+  const [images, setImages] = useState<string[]>([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isMouseOver, setIsMouseOver] = useState(false);
 
@@ -93,6 +95,24 @@ export default function Carousel({ active }: CarouselProps) {
     document.getElementById('prevButton')!.style.opacity = '0';
     document.getElementById('nextButton')!.style.opacity = '0';
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          'https://wevent-api-nvcxh.run.goorm.site/api/events/home/',
+        );
+        const adImages = response.data.ads.map((ad: { ad_image: string }) =>
+          ad.ad_image.startsWith('/') ? ad.ad_image : `/${ad.ad_image}`,
+        );
+        setImages(adImages);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
