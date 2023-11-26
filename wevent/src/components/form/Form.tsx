@@ -1,17 +1,13 @@
 import { FormProvider, useForm } from 'react-hook-form';
 import FormController from './FormController';
-import { formInfoType } from 'type/formType';
+import { formButton, formInfoType } from 'type/formType';
 
 interface props {
   formClassName?: string;
   defaultData?: { [key: string]: string };
   formList: formInfoType[];
   onSubmitEvent: (result: object) => void;
-  buttonList: {
-    content: string;
-    clickEvent?: () => void;
-    type?: 'button' | 'submit';
-  }[];
+  buttonList: formButton[];
 }
 
 const Form = ({

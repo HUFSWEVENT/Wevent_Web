@@ -1,15 +1,11 @@
 import Form from 'components/form/Form';
 import SocialLoginSection from './SocialLoginSection';
-import { formInfoType } from 'type/formType';
+import { formButton, formInfoType } from 'type/formType';
 
 interface props {
   formList: formInfoType[];
   notification?: { title: string; content: string[] } | null;
-  buttonList: {
-    content: string;
-    clickEvent?: () => void;
-    type?: 'button' | 'submit';
-  }[];
+  buttonList: formButton[];
   onSubmitEvent: (result: object) => void;
 }
 

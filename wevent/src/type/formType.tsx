@@ -16,3 +16,8 @@ export type formInfoType = {
     button?: { content: string; clickEvent: () => void };
   } | null;
 };
+export type formButton = {
+  content: string;
+  clickEvent?: () => void;
+  type?: 'button' | 'submit';
+};
