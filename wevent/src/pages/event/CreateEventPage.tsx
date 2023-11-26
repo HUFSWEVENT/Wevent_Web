@@ -1,8 +1,13 @@
 import Form from 'components/form/Form';
 import React from 'react';
+import { useForm } from 'react-hook-form';
 import { formInfoType } from 'type/formType';
 
 const CreateEventPage = () => {
+  const methods = useForm({
+    defaultValues: {},
+    mode: 'onChange',
+  });
   const formList: formInfoType[] = [
     {
       title: '행사명',
@@ -35,17 +40,33 @@ const CreateEventPage = () => {
       additionalFieldInfo: null,
     },
   ];
+
   return (
     <article className="px-12">
       <section>title</section>
       <section>
         <Form
           formClassName="bg-[#F8F8F8] rounded-3xl py-6 px-8"
+          globalMethods={methods}
           formList={formList}
           onSubmitEvent={function (result: object): void {
             throw new Error('Function not implemented.');
           }}
-          buttonList={[]}
+          buttonList={[
+            {
+              content: '임시저장',
+              clickEvent: () => {
+                console.log('임시저장');
+              },
+            },
+            {
+              content: '행사등록',
+              clickEvent: () => {
+                console.log('행사등록');
+              },
+              type: 'submit',
+            },
+          ]}
         ></Form>
       </section>
     </article>

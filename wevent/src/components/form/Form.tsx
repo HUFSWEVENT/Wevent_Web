@@ -4,6 +4,7 @@ import { formButton, formInfoType } from 'type/formType';
 
 interface props {
   formClassName?: string;
+  globalMethods?: any;
   defaultData?: { [key: string]: string };
   formList: formInfoType[];
   onSubmitEvent: (result: object) => void;
@@ -12,15 +13,18 @@ interface props {
 
 const Form = ({
   formClassName = '',
+  globalMethods = null,
   defaultData = {},
   formList,
   onSubmitEvent,
   buttonList,
 }: props) => {
-  const methods = useForm({
-    defaultValues: defaultData ?? {},
-    mode: 'onChange',
-  });
+  const methods = globalMethods
+    ? globalMethods
+    : useForm({
+        defaultValues: defaultData ?? {},
+        mode: 'onChange',
+      });
 
   return (
     <FormProvider {...methods}>
