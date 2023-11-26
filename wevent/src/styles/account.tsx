@@ -1,3 +1,4 @@
+import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import { styled } from 'styled-components';
 import tw from 'twin.macro';
@@ -15,6 +16,17 @@ export const StyledTextField = styled(TextField)`
     }
     .MuiInputBase-root {
       ${tw`border-[#72787E] rounded-[0]`}
+      input {
+        ${tw`pl-10`}
+      }
+    }
+  }
+`;
+
+export const StyledSelect = styled(FormControl)`
+  & {
+    .MuiInputBase-root {
+      ${tw`border-[#72787E] rounded-[0] h-[3rem]`}
       input {
         ${tw`pl-10`}
       }
