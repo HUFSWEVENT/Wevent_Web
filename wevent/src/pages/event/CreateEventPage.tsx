@@ -36,11 +36,11 @@ const CreateEventPage = () => {
     },
   ];
   return (
-    <article>
+    <article className="px-12">
       <section>title</section>
       <section>
         <Form
-          defaultData={{}}
+          formClassName="bg-[#F8F8F8] rounded-3xl py-6 px-8"
           formList={formList}
           onSubmitEvent={function (result: object): void {
             throw new Error('Function not implemented.');

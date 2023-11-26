@@ -32,7 +32,7 @@ const FormController = ({
   additionalFieldInfo = null,
 }: props) => {
   return (
-    <div>
+    <div className={`flex-grow`}>
       <Controller
         name={name}
         rules={{ required: required ?? true }}

@@ -3,7 +3,8 @@ import FormController from './FormController';
 import { formInfoType } from 'type/formType';
 
 interface props {
-  defaultData: { [key: string]: string };
+  formClassName?: string;
+  defaultData?: { [key: string]: string };
   formList: formInfoType[];
   onSubmitEvent: (result: object) => void;
   buttonList: {
@@ -13,7 +14,13 @@ interface props {
   }[];
 }
 
-const Form = ({ defaultData, formList, onSubmitEvent, buttonList }: props) => {
+const Form = ({
+  formClassName = '',
+  defaultData = {},
+  formList,
+  onSubmitEvent,
+  buttonList,
+}: props) => {
   const methods = useForm({
     defaultValues: defaultData ?? {},
     mode: 'onChange',
@@ -23,11 +30,11 @@ const Form = ({ defaultData, formList, onSubmitEvent, buttonList }: props) => {
     <FormProvider {...methods}>
       <form
         onSubmit={methods.handleSubmit(onSubmitEvent)}
-        className={`w-full flex flex-col gap-10`}
+        className={`w-full flex flex-col gap-10 ${formClassName}`}
       >
         {formList.map((form, index) => {
           return (
-            <div key={index} className={`flex gap-2`}>
+            <div key={index} className={`flex gap-2 w-full items-center`}>
               {form.title && (
                 <div className={`font-bold text-xl`}>
                   {form.title}
