@@ -5,6 +5,7 @@ import Search from './pages/Search';
 import LoginPage from 'pages/account/LoginPage';
 import SignupPage from 'pages/account/SignupPage';
 import ValidateEmailPage from 'pages/account/ValidateEmailPage';
+import CreateEventPage from 'pages/event/CreateEventPage';
 
 export interface RouteProps {
   path: string;
@@ -16,6 +17,7 @@ export const routes: RouteProps[] = [
   { path: '/account/login', element: <LoginPage /> },
   { path: '/account/signup', element: <SignupPage /> },
   { path: '/account/validate-email', element: <ValidateEmailPage /> },
+  { path: '/create/event', element: <CreateEventPage /> },
 ];
 const RoutesSetting = () => (
   <Routes>
