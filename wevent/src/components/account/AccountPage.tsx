@@ -3,7 +3,6 @@ import SocialLoginSection from './SocialLoginSection';
 import { formInfoType } from 'type/formType';
 
 interface props {
-  defaultData: { [key: string]: string };
   formList: formInfoType[];
   notification?: { title: string; content: string[] } | null;
   buttonList: {
@@ -15,7 +14,6 @@ interface props {
 }
 
 const AccountPage = ({
-  defaultData,
   formList,
   notification = null,
   onSubmitEvent,
@@ -44,7 +42,6 @@ const AccountPage = ({
 
       <section className={`w-full flex flex-col mb-[2rem]`}>
         <Form
-          defaultData={defaultData}
           formList={formList}
           onSubmitEvent={onSubmitEvent}
           buttonList={buttonList}

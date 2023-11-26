@@ -44,7 +44,6 @@ const LoginPage = () => {
   ];
   return (
     <AccountPage
-      defaultData={{}}
       formList={formList}
       onSubmitEvent={loginHandler}
       buttonList={[

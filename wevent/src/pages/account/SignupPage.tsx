@@ -81,7 +81,6 @@ const SignupPage = () => {
 
   return (
     <AccountPage
-      defaultData={{}}
       formList={formList}
       onSubmitEvent={signUpHandler}
       buttonList={[
