@@ -2,12 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 interface PostCardProps {
-  img: string;
+  event_image: string;
   title: string;
   dday: string;
   host: string;
-  type: string;
-  view: string;
+  sponsor_category: string;
+  views: string;
 }
 
 const OuterContainer = styled.div`
@@ -31,21 +31,21 @@ const Text1 = styled.p`
   font-size: 16px;
   color: #333;
   text-align: right;
-  margin-bottom: -10px;
+  margin-bottom: -5px;
 `;
 
 const Text2 = styled.p`
   font-size: 20px;
   font-weight: 3px;
   color: #666;
-  margin-bottom: -10px;
+  margin-bottom: -3px;
   margin-top: -15px;
 `;
 
 const Text3 = styled.p`
   font-size: 14px;
   color: #666;
-  margin-bottom: -10px;
+  margin-bottom: -3px;
 `;
 
 const Text4 = styled.p`
@@ -65,23 +65,23 @@ const ViewText = styled.span`
 `;
 
 export default function PostCard({
-  img,
+  event_image,
   dday,
   title,
-  type,
+  sponsor_category,
   host,
-  view,
+  views,
 }: PostCardProps) {
   return (
     <OuterContainer>
-      <Image src={img} alt="img" />
+      <Image src={event_image} alt="img" />
       <TextContainer>
         <Text1>{dday}</Text1>
         <Text2>{title}</Text2>
-        <Text3>{type}</Text3>
+        <Text3>{sponsor_category}</Text3>
         <Text4>
           <HostText>{host}</HostText>
-          <ViewText>{view}</ViewText>
+          <ViewText>{views}회 조회</ViewText>
         </Text4>
       </TextContainer>
     </OuterContainer>
