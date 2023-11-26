@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 const EventDetailsContainer = styled.div`
   display: flex;
@@ -29,9 +30,10 @@ const EventImage = styled.img`
   }
 `;
 function MoreEventButton() {
+  const navigate = useNavigate();
   return (
     <>
-      <EventDetailsContainer>
+      <EventDetailsContainer onClick={() => navigate(`/search`)}>
         <MoreEvent>행사더보기</MoreEvent>
         <EventImage src="Images/arrow_circle.png" alt="행사 더보기" />
       </EventDetailsContainer>
