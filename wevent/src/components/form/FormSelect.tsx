@@ -1,6 +1,6 @@
 import { InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import React from 'react';
-import { StyledSelect } from 'styles/account';
+import { StyledSelect } from 'styles/form';
 
 interface props {
   field: any;

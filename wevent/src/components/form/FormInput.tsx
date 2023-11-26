@@ -1,5 +1,5 @@
 import InputAdornment from '@mui/material/InputAdornment';
-import { StyledTextField } from 'styles/account';
+import { StyledTextField } from 'styles/form';
 
 interface props {
   field: any;

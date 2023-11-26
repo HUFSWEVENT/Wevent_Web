@@ -1,4 +1,4 @@
-export type formFieldType = 'input' | 'select' | 'phased-select';
+export type formFieldType = 'input' | 'select' | 'phased-select' | 'text-area';
 export type formInfoType = {
   title?: string;
   fieldType: formFieldType;

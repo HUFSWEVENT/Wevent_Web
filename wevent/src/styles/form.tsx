@@ -1,5 +1,6 @@
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
+import { TextareaAutosize as BaseTextareaAutosize } from '@mui/base/TextareaAutosize';
 import { styled } from 'styled-components';
 import tw from 'twin.macro';
 
@@ -32,5 +33,15 @@ export const StyledSelect = styled(FormControl)<{ width: string }>`
       }
       width: ${(props) => props.width};
     }
+  }
+`;
+
+export const StyledTextArea = styled(BaseTextareaAutosize)<{ width: string }>`
+  & {
+    ${tw`border border-solid border-[#72787E] rounded-[0] h-[3rem] p-6`}
+    input {
+      ${tw`pl-10`}
+    }
+    width: ${(props) => props.width};
   }
 `;

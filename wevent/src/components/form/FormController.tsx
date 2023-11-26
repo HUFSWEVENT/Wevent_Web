@@ -3,6 +3,7 @@ import { Controller } from 'react-hook-form';
 import { FormInput } from './FormInput';
 import { additionalFieldInfo, formFieldType } from 'type/formType';
 import FormSelect from './FormSelect';
+import FormTextArea from './FormTextArea';
 
 interface props {
   fieldType: formFieldType;
@@ -119,6 +120,31 @@ const FormController = ({
                       : ''
                   }
                 ></FormSelect>
+              );
+            } else if (fieldType === 'text-area') {
+              return (
+                <FormTextArea
+                  field={field}
+                  name={typeof name === 'string' ? name : name[index]}
+                  placeholder={
+                    typeof placeholder === 'string'
+                      ? placeholder
+                      : placeholder[index]
+                  }
+                  required={required}
+                  disabled={disabled}
+                  defaultValue={
+                    typeof defaultValue === 'string'
+                      ? defaultValue
+                      : defaultValue[name[index]]
+                  }
+                  error={null}
+                  width={
+                    additionalFieldInfo && additionalFieldInfo.width
+                      ? additionalFieldInfo.width
+                      : ''
+                  }
+                ></FormTextArea>
               );
             } else {
               return <div></div>;
