@@ -52,21 +52,27 @@ const CreateEventPage = () => {
           onSubmitEvent={function (result: object): void {
             throw new Error('Function not implemented.');
           }}
-          buttonList={[
-            {
-              content: '임시저장',
-              clickEvent: () => {
-                console.log('임시저장');
+          buttonInfo={{
+            list: [
+              {
+                content: '임시저장',
+                clickEvent: () => {
+                  console.log('임시저장');
+                },
+                color: 'gray',
+                width: '9rem',
               },
-            },
-            {
-              content: '행사등록',
-              clickEvent: () => {
-                console.log('행사등록');
+              {
+                content: '행사등록',
+                clickEvent: () => {
+                  console.log('행사등록');
+                },
+                type: 'submit',
+                width: '9rem',
               },
-              type: 'submit',
-            },
-          ]}
+            ],
+            direction: 'row',
+          }}
         ></Form>
       </section>
     </article>

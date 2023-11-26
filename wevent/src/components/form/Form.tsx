@@ -9,7 +9,7 @@ interface props {
   defaultData?: { [key: string]: string };
   formList: formInfoType[];
   onSubmitEvent: (result: object) => void;
-  buttonList: formButton[];
+  buttonInfo: { list: formButton[]; direction?: 'col' | 'row' };
 }
 
 const Form = ({
@@ -18,7 +18,7 @@ const Form = ({
   defaultData = {},
   formList,
   onSubmitEvent,
-  buttonList,
+  buttonInfo,
 }: props) => {
   const methods = globalMethods
     ? globalMethods
@@ -58,8 +58,12 @@ const Form = ({
           );
         })}
 
-        <section className={`flex flex-col items-center gap-2`}>
-          {buttonList.map((button, index) => (
+        <section
+          className={`flex items-center gap-2 justify-center ${
+            buttonInfo.direction === 'col' ? 'flex-col' : ''
+          }`}
+        >
+          {buttonInfo.list.map((button, index) => (
             <Button
               key={index}
               color={button.color ?? 'blue'}
