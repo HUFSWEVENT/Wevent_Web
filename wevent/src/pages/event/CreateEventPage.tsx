@@ -1,5 +1,5 @@
 import Form from 'components/form/Form';
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { formInfoType } from 'type/formType';
 
@@ -8,6 +8,7 @@ const CreateEventPage = () => {
     defaultValues: {},
     mode: 'onChange',
   });
+  const [thumnail, setThumnail] = useState('');
   const formList: formInfoType[] = [
     {
       title: '행사명',
@@ -49,8 +50,41 @@ const CreateEventPage = () => {
       error: null,
       additionalFieldInfo: {
         menuItemObj: {
-          0: [{ value: '경영', label: '경영' }],
-          1: [{ value: '강연/세미나', label: '강연/세미나' }],
+          0: [
+            { value: '경영', label: '경영' },
+            { value: '경제/금융', label: '경제/금융' },
+            { value: '과학기술', label: '과학기술' },
+            { value: '관광/여행', label: '관광/여행' },
+            { value: '디자인/영상', label: '디자인/영상' },
+            { value: '라이프', label: '라이프' },
+            { value: '마케팅', label: '마케팅' },
+            { value: '예술', label: '예술' },
+            { value: '의료/의학', label: '의료/의학' },
+            { value: '인문/사회', label: '인문/사회' },
+            { value: '창업', label: '창업' },
+            { value: '커리어', label: '커리어' },
+            { value: '행사 기획', label: '행사 기획' },
+            { value: 'IT/프로그래밍', label: 'IT/프로그래밍' },
+            { value: '기타', label: '기타' },
+          ],
+          1: [
+            { value: '강연/세미나', label: '강연/세미나' },
+            { value: '공연/전시', label: '공연/전시' },
+            { value: '관광/투어', label: '관광/투어' },
+            { value: '기업회의', label: '기업회의' },
+            { value: '대회/공모전', label: '대회/공모전' },
+            { value: '데모데이', label: '데모데이' },
+            { value: '멘토링/대외활동', label: '멘토링/대외활동' },
+            { value: '모임/커뮤니티', label: '모임/커뮤니티' },
+            { value: '워크샵/클리닉', label: '워크샵/클리닉' },
+            { value: '박람회/페어', label: '박람회/페어' },
+            { value: '정부회의', label: '정부회의' },
+            { value: '축제', label: '축제' },
+            { value: '컨벤션', label: '컨벤션' },
+            { value: '콘테스트/콩쿠르', label: '콘테스트/콩쿠르' },
+            { value: '학술회의', label: '학술회의' },
+            { value: '기타', label: '기타' },
+          ],
         },
         width: '15rem',
       },
@@ -155,6 +189,17 @@ const CreateEventPage = () => {
       error: null,
       additionalFieldInfo: null,
     },
+
+    {
+      title: '행사 대표 이미지',
+      fieldType: 'image',
+      name: 'img',
+      placeholder: '썸네일 이미지를 등록해주세요. \n (640 * 320)',
+      required: false,
+      disabled: false,
+      error: null,
+      additionalFieldInfo: { saveImageEvent: (img) => setThumnail(img) },
+    },
     {
       title: '참가자 기술',
       fieldType: 'input',
@@ -196,7 +241,7 @@ const CreateEventPage = () => {
       <section>title</section>
       <section>
         <Form
-          formClassName="bg-[#F8F8F8] rounded-3xl py-6 px-8"
+          formClassName="bg-[#F8F8F8] rounded-3xl py-12 px-16"
           globalMethods={methods}
           formList={formList}
           onSubmitEvent={function (result: object): void {
