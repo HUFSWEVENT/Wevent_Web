@@ -14,6 +14,7 @@ interface props {
   error: {
     text: string;
   } | null;
+  width?: string;
 }
 
 const FormSelect = ({
@@ -26,7 +27,9 @@ const FormSelect = ({
   disabled,
   defaultValue,
   error,
+  width = '100%',
 }: props) => {
+  console.log(menuItemList);
   const [value, setValue] = React.useState('');
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -34,7 +37,7 @@ const FormSelect = ({
   };
 
   return (
-    <StyledSelect fullWidth>
+    <StyledSelect width={width}>
       {label && <InputLabel id="demo-simple-select-label">{label}</InputLabel>}
       <Select
         labelId="demo-simple-select-label"

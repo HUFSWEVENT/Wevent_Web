@@ -40,6 +40,22 @@ const CreateEventPage = () => {
       additionalFieldInfo: null,
     },
     {
+      title: '행사 분야/유형',
+      fieldType: 'phased-select',
+      name: ['kind', 'kind2'],
+      placeholder: ['분야 선택', '세부 분야 선택'],
+      required: true,
+      disabled: false,
+      error: null,
+      additionalFieldInfo: {
+        menuItemObj: {
+          0: [{ value: '경영', label: '경영' }],
+          1: [{ value: '강연/세미나', label: '강연/세미나' }],
+        },
+        width: '15rem',
+      },
+    },
+    {
       title: '행사 규모',
       fieldType: 'select',
       name: 'size',
@@ -48,13 +64,24 @@ const CreateEventPage = () => {
       disabled: false,
       error: null,
       additionalFieldInfo: {
-        menuItemList: [
-          { value: '50명 이하', label: '50명 이하' },
-          { value: '50명', label: '50명' },
-          { value: '100명', label: '100명' },
-          { value: '150명', label: '150명' },
-          { value: '200명', label: '200명' },
-        ],
+        menuItemObj: {
+          0: [
+            { value: '50명 이하', label: '50명 이하' },
+            { value: '50명', label: '50명' },
+            { value: '100명', label: '100명' },
+            { value: '150명', label: '150명' },
+            { value: '200명', label: '200명' },
+            { value: '300명', label: '300명' },
+            { value: '400명', label: '400명' },
+            { value: '500명', label: '500명' },
+            { value: '600명', label: '600명' },
+            { value: '700명', label: '700명' },
+            { value: '800명', label: '800명' },
+            { value: '900명', label: '900명' },
+            { value: '1000명', label: '1000명' },
+          ],
+        },
+        width: '15rem',
       },
     },
   ];

@@ -23,13 +23,14 @@ export const StyledTextField = styled(TextField)`
   }
 `;
 
-export const StyledSelect = styled(FormControl)`
+export const StyledSelect = styled(FormControl)<{ width: string }>`
   & {
     .MuiInputBase-root {
       ${tw`border-[#72787E] rounded-[0] h-[3rem]`}
       input {
         ${tw`pl-10`}
       }
+      width: ${(props) => props.width};
     }
   }
 `;

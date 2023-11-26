@@ -27,6 +27,16 @@ const Form = ({
         mode: 'onChange',
       });
 
+  const getDefaultData = (name: string | string[]) => {
+    if (typeof name === 'string') {
+      return defaultData[name];
+    } else {
+      const result: { [key: string]: string } = {};
+      name.map((_n: string) => (result[_n] = defaultData[_n]));
+      return result;
+    }
+  };
+
   return (
     <FormProvider {...methods}>
       <form
@@ -50,7 +60,7 @@ const Form = ({
                 name={form.name}
                 placeholder={form.placeholder}
                 disabled={form.disabled ?? false}
-                defaultValue={defaultData[form.name]}
+                defaultValue={getDefaultData(form.name)}
                 error={form.error ?? null}
                 additionalFieldInfo={form.additionalFieldInfo}
               ></FormController>
