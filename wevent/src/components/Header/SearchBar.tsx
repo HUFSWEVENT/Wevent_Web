@@ -17,7 +17,6 @@ const SearchWrapper = styled.div`
   border-radius: 3rem;
   padding: 1rem;
   margin-right: 4rem;
-  height: 1rem;
   background-color: white;
 `;
 
@@ -26,8 +25,7 @@ const SearchInput = styled.input`
   border: none;
   outline: none;
   width: 35rem;
-  height: 1.2rem;
-  margin-left: 1rem;
+  margin-left: 0.5rem;
 `;
 
 const SearchIcon = styled.img`
