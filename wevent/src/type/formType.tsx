@@ -1,4 +1,9 @@
-export type formFieldType = 'input' | 'select' | 'phased-select' | 'text-area';
+export type formFieldType =
+  | 'input'
+  | 'select'
+  | 'phased-select'
+  | 'text-area'
+  | 'image';
 export type formInfoType = {
   title?: string;
   fieldType: formFieldType;
@@ -19,6 +24,7 @@ export type additionalFieldInfo = {
   button?: { content: string; clickEvent: () => void };
   menuItemObj?: { [key: string]: menuItemList };
   width?: string;
+  saveImageEvent?: (img: string) => void;
 };
 export type formButton = {
   content: string;

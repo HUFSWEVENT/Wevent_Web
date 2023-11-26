@@ -4,6 +4,7 @@ import { FormInput } from './FormInput';
 import { additionalFieldInfo, formFieldType } from 'type/formType';
 import FormSelect from './FormSelect';
 import FormTextArea from './FormTextArea';
+import FormInputPhoto from './FormPhoto';
 
 interface props {
   fieldType: formFieldType;
@@ -145,6 +146,25 @@ const FormController = ({
                       : '100%'
                   }
                 ></FormTextArea>
+              );
+            } else if (fieldType === 'image') {
+              return (
+                <FormInputPhoto
+                  field={field}
+                  name={typeof name === 'string' ? name : name[index]}
+                  placeholder={
+                    typeof placeholder === 'string'
+                      ? placeholder
+                      : placeholder[index]
+                  }
+                  saveImageEvent={
+                    additionalFieldInfo && additionalFieldInfo.saveImageEvent
+                      ? additionalFieldInfo.saveImageEvent
+                      : (img) => {
+                          img;
+                        }
+                  }
+                />
               );
             } else {
               return <div></div>;
