@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import SectionLine from 'components/SectionLine';
 import theme from 'styles/theme';
 import Button from 'components/button/Button';
-
 const BoldText = styled.p`
   margin-top: 30px;
   margin-bottom: 15px;
@@ -57,7 +56,9 @@ const TextContents = styled.p`
 function SearchContentsCard() {
   return (
     <>
-      <BoldText>행사 소개</BoldText>
+      <div id="introduction">
+        <BoldText>행사 소개</BoldText>
+      </div>
       <SectionLine />
       <StyledTable>
         <tbody>
@@ -87,8 +88,9 @@ function SearchContentsCard() {
           </tr>
         </tbody>
       </StyledTable>
-
-      <BoldText>행사 목적</BoldText>
+      <div id="purpose">
+        <BoldText>행사 목적</BoldText>
+      </div>
       <SectionLine />
       <TextContents>
         멋쟁이 사자처럼 대학에 소속되어 있는 8개의 대학이 참여하는 네트워킹
@@ -101,7 +103,9 @@ function SearchContentsCard() {
         가지게 하여, 해커톤 이후에도 오픈소스 개발의 주도적인 역할을 하면서 다른
         학생들을 리드할 수 있을만큼 성장하는 것을 목적으로 합니다.
       </TextContents>
-      <BoldText>협찬 혜택</BoldText>
+      <div id="benefits">
+        <BoldText>협찬 혜택</BoldText>
+      </div>
       <SectionLine />
       <BoldText>협찬 요청 물품 : </BoldText>
       <BtnWrapper>
@@ -131,8 +135,9 @@ function SearchContentsCard() {
         좋음!저희 행사에 후원해주신다면 어쩌구저쩌구 아무튼 좋음!저희 행사에
         후원해주신다면 어쩌구저쩌구 아무튼 좋음!
       </TextContents>
-
-      <BoldText>참가자 안내</BoldText>
+      <div id="guides">
+        <BoldText>참가자 안내</BoldText>
+      </div>
       <SectionLine />
       <BoldText2>참가자 모집 방법</BoldText2>
       <TextContents>

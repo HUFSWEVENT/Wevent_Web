@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from 'styled-components';
 import theme from 'styles/theme';
+import { Link } from 'react-scroll';
 
 const SearchSectionWrapper = styled.div`
   display: flex;
   justify-content: center;
   gap: 50px;
-  margin: 12 0;
+  margin: 25px 0px;
 `;
 
 const SearchItem = styled.div`
@@ -26,12 +27,24 @@ const SearchItem = styled.div`
 function SearchSection() {
   return (
     <SearchSectionWrapper>
-      <SearchItem>행사 소개</SearchItem>
-      <SearchItem>행사 목적</SearchItem>
-      <SearchItem>협찬 혜택</SearchItem>
-      <SearchItem>참가자 안내</SearchItem>
-      <SearchItem>행사 기록</SearchItem>
-      <SearchItem>협찬 문의</SearchItem>
+      <Link to="introduction" smooth={true} duration={500}>
+        <SearchItem>행사 소개</SearchItem>
+      </Link>
+      <Link to="purpose" smooth={true} duration={500}>
+        <SearchItem>행사 목적</SearchItem>
+      </Link>
+      <Link to="benefits" smooth={true} duration={500}>
+        <SearchItem>협찬 혜택</SearchItem>
+      </Link>
+      <Link to="guides" smooth={true} duration={500}>
+        <SearchItem>참가자 안내</SearchItem>
+      </Link>
+      <Link to="records" smooth={true} duration={500}>
+        <SearchItem>행사 기록</SearchItem>
+      </Link>
+      <Link to="qna" smooth={true} duration={500}>
+        <SearchItem>협찬 문의</SearchItem>
+      </Link>
     </SearchSectionWrapper>
   );
 }
