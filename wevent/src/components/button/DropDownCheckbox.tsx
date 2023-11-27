@@ -21,7 +21,7 @@ const DropDownCheckbox = () => {
         type="button"
         onClick={() => setIsOpen(!isOpen)}
       >
-        후원 종류 선택
+        협찬 종류 선택
         <svg
           className="w-2.5 h-2.5 ms-3"
           aria-hidden="true"
