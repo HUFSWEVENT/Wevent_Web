@@ -27,19 +27,17 @@ const EventTitle2 = styled.div`
   color: ${theme.colors['light-grey']};
   font-weight: bold;
 `;
-
+const HOME_SERVER_URL =
+  'https://wevent-api-nvcxh.run.goorm.site/api/events/home/';
 function Home() {
   const [events, setEvents] = useState([]);
 
+  const fetchData = async () => {
+    const response = await axios.get(HOME_SERVER_URL);
+    setEvents(response.data.events);
+  };
   useEffect(() => {
-    axios
-      .get('https://wevent-api-nvcxh.run.goorm.site/api/events/home/')
-      .then((response) => {
-        setEvents(response.data.events);
-      })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
-      });
+    fetchData();
   }, []);
 
   const postsToShow = events.slice(0, 16);
@@ -96,8 +94,11 @@ function calculateDday(deadline: string, date: string): string {
   const eventDate = new Date(date);
   const timeDiff = deadlineDate.getTime() - eventDate.getTime();
   const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
-
-  return `D${daysDiff}`;
+  if (daysDiff == 0) {
+    return 'D-DAY';
+  } else {
+    return `D${daysDiff}`;
+  }
 }
 
 export default Home;
