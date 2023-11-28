@@ -81,9 +81,11 @@ export default function PostCard({
   host,
   views,
 }: PostCardProps) {
+  const baseUrl = 'https://wevent-api-nvcxh.run.goorm.site';
+  const fullImageUrl = baseUrl + event_image;
   return (
     <OuterContainer>
-      <Image src={event_image} alt="img" />
+      <Image src={fullImageUrl} alt="img" />
       <TextContainer>
         <Text1>{dday}</Text1>
         <Text2>{title}</Text2>
