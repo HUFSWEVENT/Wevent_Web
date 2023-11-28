@@ -29,12 +29,15 @@ const EventTitle2 = styled.div`
 `;
 const HOME_SERVER_URL =
   'https://wevent-api-nvcxh.run.goorm.site/api/events/home/';
+
 function Home() {
   const [events, setEvents] = useState([]);
+  const [ads, setAds] = useState([]);
 
   const fetchData = async () => {
     const response = await axios.get(HOME_SERVER_URL);
     setEvents(response.data.events);
+    setAds(response.data.ads);
   };
   useEffect(() => {
     fetchData();
@@ -46,7 +49,9 @@ function Home() {
     <>
       <Header />
       <Wrapper>
-        <Carousel />
+        {ads.map(({ id, ad_image }) => {
+          return <Carousel key={id} ad_image={ad_image} />;
+        })}
         <TextContainer>
           <EventTitle>행사리스트</EventTitle>
           <MoreEventButton />

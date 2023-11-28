@@ -1,11 +1,10 @@
-// Carousel.tsx
-
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
+import dummyImg from '../data/Slides.json';
 
 interface CarouselProps {
   active?: boolean;
+  ad_image: string;
 }
 
 const StyledCarouselWrapper = styled.div`
@@ -63,8 +62,8 @@ const BulletPoint = styled.div<{ active?: boolean }>`
   transition: background-color 0.2s ease-in-out;
 `;
 
-export default function Carousel({ active }: CarouselProps) {
-  const [images, setImages] = useState<string[]>([]);
+export default function Carousel({ ad_image }: CarouselProps) {
+  const [images, setImages] = useState(dummyImg.images);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isMouseOver, setIsMouseOver] = useState(false);
 
@@ -97,30 +96,14 @@ export default function Carousel({ active }: CarouselProps) {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          'https://wevent-api-nvcxh.run.goorm.site/api/events/home/',
-        );
-        const adImages = response.data.ads.map((ad: { ad_image: string }) =>
-          ad.ad_image.startsWith('/') ? ad.ad_image : `/${ad.ad_image}`,
-        );
-        setImages(adImages);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  useEffect(() => {
     const interval = setInterval(() => {
       nextImage();
     }, 3000);
 
     return () => clearInterval(interval);
   }, [currentImageIndex, isMouseOver]);
+  const baseURL = 'https://wevent-api-nvcxh.run.goorm.site';
+  const fullImageUrl = baseURL + ad_image;
 
   return (
     <>
@@ -129,7 +112,7 @@ export default function Carousel({ active }: CarouselProps) {
         onMouseLeave={handleMouseLeave}
       >
         <StyledImage
-          src={images[currentImageIndex]}
+          src={fullImageUrl}
           alt={`Slide ${currentImageIndex + 1}`}
         />
 
