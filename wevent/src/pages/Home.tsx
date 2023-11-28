@@ -49,9 +49,8 @@ function Home() {
     <>
       <Header />
       <Wrapper>
-        {ads.map(({ id, ad_image }) => {
-          return <Carousel key={id} ad_image={ad_image} />;
-        })}
+        <Carousel />
+
         <TextContainer>
           <EventTitle>행사리스트</EventTitle>
           <MoreEventButton />
