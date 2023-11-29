@@ -1,20 +1,30 @@
-export type formFieldType = 'input' | 'select';
+export type formFieldType =
+  | 'input'
+  | 'select'
+  | 'phased-select'
+  | 'text-area'
+  | 'image';
 export type formInfoType = {
   title?: string;
   fieldType: formFieldType;
-  name: string;
-  placeholder: string;
+  name: string | string[];
+  placeholder: string | string[];
   required?: boolean;
   disabled?: boolean;
   error?: {
     text: string;
   } | null;
-  additionalFieldInfo?: {
-    label: string;
-    inputType: 'text' | 'number' | 'password';
-    icon?: any;
-    button?: { content: string; clickEvent: () => void };
-  } | null;
+  additionalFieldInfo?: additionalFieldInfo | null;
+};
+export type menuItemList = { value: string; label: string }[];
+export type additionalFieldInfo = {
+  label?: string;
+  inputType?: 'text' | 'number' | 'password';
+  icon?: any;
+  button?: { content: string; clickEvent: () => void };
+  menuItemObj?: { [key: string]: menuItemList };
+  width?: string;
+  saveImageEvent?: (img: string) => void;
 };
 export type formButton = {
   content: string;

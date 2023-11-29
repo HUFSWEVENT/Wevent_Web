@@ -40,7 +40,7 @@ const AccountPage = ({
         <Form
           formList={formList}
           onSubmitEvent={onSubmitEvent}
-          buttonList={buttonList}
+          buttonInfo={{ list: buttonList, direction: 'col' }}
         ></Form>
       </section>
       {/* <SocialLoginSection></SocialLoginSection> */}

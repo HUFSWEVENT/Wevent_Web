@@ -1,5 +1,5 @@
 import InputAdornment from '@mui/material/InputAdornment';
-import { StyledTextField } from 'styles/account';
+import { StyledTextField } from 'styles/form';
 
 interface props {
   field: any;
@@ -42,6 +42,7 @@ export const FormInput = ({
         defaultValue={defaultValue}
         error={error}
         helperText={error?.text}
+        placeholder={label ? '' : placeholder}
         size="small"
         fullWidth
         InputProps={{

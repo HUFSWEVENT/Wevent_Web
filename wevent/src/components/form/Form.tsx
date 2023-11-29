@@ -9,7 +9,7 @@ interface props {
   defaultData?: { [key: string]: string };
   formList: formInfoType[];
   onSubmitEvent: (result: object) => void;
-  buttonList: formButton[];
+  buttonInfo: { list: formButton[]; direction?: 'col' | 'row' };
 }
 
 const Form = ({
@@ -18,7 +18,7 @@ const Form = ({
   defaultData = {},
   formList,
   onSubmitEvent,
-  buttonList,
+  buttonInfo,
 }: props) => {
   const methods = globalMethods
     ? globalMethods
@@ -26,6 +26,16 @@ const Form = ({
         defaultValues: defaultData ?? {},
         mode: 'onChange',
       });
+
+  const getDefaultData = (name: string | string[]) => {
+    if (typeof name === 'string') {
+      return defaultData[name];
+    } else {
+      const result: { [key: string]: string } = {};
+      name.map((_n: string) => (result[_n] = defaultData[_n]));
+      return result;
+    }
+  };
 
   return (
     <FormProvider {...methods}>
@@ -37,7 +47,7 @@ const Form = ({
           return (
             <div key={index} className={`flex gap-2 w-full items-center`}>
               {form.title && (
-                <div className={`font-bold text-xl`}>
+                <div className={`font-bold text-xl min-w-[10rem]`}>
                   {form.title}
                   <span className={`text-[#01A0FF]`}>
                     {form.required ? '*' : ''}
@@ -50,7 +60,7 @@ const Form = ({
                 name={form.name}
                 placeholder={form.placeholder}
                 disabled={form.disabled ?? false}
-                defaultValue={defaultData[form.name]}
+                defaultValue={getDefaultData(form.name)}
                 error={form.error ?? null}
                 additionalFieldInfo={form.additionalFieldInfo}
               ></FormController>
@@ -58,8 +68,12 @@ const Form = ({
           );
         })}
 
-        <section className={`flex flex-col items-center gap-2`}>
-          {buttonList.map((button, index) => (
+        <section
+          className={`flex items-center gap-2 justify-center ${
+            buttonInfo.direction === 'col' ? 'flex-col' : ''
+          }`}
+        >
+          {buttonInfo.list.map((button, index) => (
             <Button
               key={index}
               color={button.color ?? 'blue'}
