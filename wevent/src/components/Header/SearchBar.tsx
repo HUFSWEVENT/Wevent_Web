@@ -70,7 +70,7 @@ export default function SearchBar({ onSearch }: SearchBarProps) {
           placeholder="협찬하고 싶은 행사를 찾아보세요!"
         />
         <SearchIcon
-          src="Images/search-icon.png"
+          src="/Images/search-icon.png"
           alt="searchicon"
           onClick={handleSearch}
         />

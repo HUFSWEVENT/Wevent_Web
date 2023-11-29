@@ -41,7 +41,7 @@ const Header = () => {
   };
   return (
     <HeaderContainer>
-      <Logo src="Images/Logo.png" alt="logo" />
+      <Logo src="/Images/Logo.png" alt="logo" />
 
       <SearchBar onSearch={handleSearch} />
 
