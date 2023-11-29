@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
-import dummyImg from '../data/Slides.json';
-
-interface CarouselProps {
-  active?: boolean;
+import theme from 'styles/theme';
+interface Ad {
+  id: number;
+  ad_image: string;
 }
 
-const StyledCarouselWrapper = styled.div`
+const StyledCarousel = styled.div`
   position: relative;
   width: 100%;
   height: 350px;
@@ -17,8 +18,8 @@ const StyledCarouselWrapper = styled.div`
 
 const StyledImage = styled.img`
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  display: block;
 `;
 
 const StyledButtonWrapper = styled.div`
@@ -30,13 +31,17 @@ const StyledButtonWrapper = styled.div`
   justify-content: space-between;
 `;
 
-const StyledButton = styled.div`
+const StyledLeftButton = styled.div`
   opacity: 0;
   transition: opacity 0.2s ease-in-out;
   cursor: pointer;
+  margin: 0 15px;
 
   &:hover {
     opacity: 1;
+    img {
+      content: url('Images/LeftPageButton_hover.png');
+    }
   }
 
   img {
@@ -44,7 +49,24 @@ const StyledButton = styled.div`
     height: 35px;
   }
 `;
+const StyledRightButton = styled.div`
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  cursor: pointer;
+  margin: 0 15px;
 
+  &:hover {
+    opacity: 1;
+    img {
+      content: url('Images/RightPageButton_hover.png');
+    }
+  }
+
+  img {
+    width: 35px;
+    height: 35px;
+  }
+`;
 const ProgressBar = styled.div`
   display: flex;
   justify-content: center;
@@ -57,78 +79,111 @@ const BulletPoint = styled.div<{ active?: boolean }>`
   height: 10px;
   margin: 0 5px;
   border-radius: 50%;
-  background-color: ${({ active }) => (active ? '#01A0FF' : '#ccc')};
+  background-color: ${({ active }) =>
+    active ? theme.colors['main-color'] : '#ccc'};
   transition: background-color 0.2s ease-in-out;
+  cursor: pointer;
 `;
 
-export default function Carousel({ active }: CarouselProps) {
-  const [images, setImages] = useState(dummyImg.images);
+const Carousel: React.FC = () => {
+  const [ads, setAds] = useState<Ad[]>([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isMouseOver, setIsMouseOver] = useState(false);
 
   const nextImage = () => {
-    if (!isMouseOver) {
-      setCurrentImageIndex((prevIndex) =>
-        prevIndex === images.length - 1 ? 0 : prevIndex + 1,
-      );
-    }
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === ads.length - 1 ? 0 : prevIndex + 1,
+    );
   };
 
   const prevImage = () => {
-    if (!isMouseOver) {
-      setCurrentImageIndex((prevIndex) =>
-        prevIndex === 0 ? images.length - 1 : prevIndex - 1,
-      );
-    }
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? ads.length - 1 : prevIndex - 1,
+    );
   };
 
   const handleMouseEnter = () => {
-    setIsMouseOver(true);
     document.getElementById('prevButton')!.style.opacity = '1';
     document.getElementById('nextButton')!.style.opacity = '1';
   };
 
   const handleMouseLeave = () => {
-    setIsMouseOver(false);
     document.getElementById('prevButton')!.style.opacity = '0';
     document.getElementById('nextButton')!.style.opacity = '0';
   };
 
   useEffect(() => {
+    const fetchAds = async () => {
+      try {
+        const response = await axios.get(
+          'https://wevent-api-nvcxh.run.goorm.site/api/events/home/',
+        );
+        setAds(response.data.ads);
+      } catch (error) {
+        console.error('Error fetching ads:', error);
+      }
+    };
+
+    fetchAds();
+  }, []);
+
+  useEffect(() => {
     const interval = setInterval(() => {
-      nextImage();
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % ads.length);
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [currentImageIndex, isMouseOver]);
+  }, [ads]);
 
+  const handlePrevClick = () => {
+    setCurrentImageIndex(
+      (prevIndex) => (prevIndex - 1 + ads.length) % ads.length,
+    );
+  };
+
+  const handleNextClick = () => {
+    setCurrentImageIndex((prevIndex) => (prevIndex + 1) % ads.length);
+  };
+
+  const progress = ((currentImageIndex + 1) / ads.length) * 100;
+  const handleBulletClick = (index: number) => {
+    setCurrentImageIndex(index);
+  };
   return (
     <>
-      <StyledCarouselWrapper
+      <StyledCarousel
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <StyledImage
-          src={images[currentImageIndex]}
-          alt={`Slide ${currentImageIndex + 1}`}
-        />
-
-        <StyledButtonWrapper>
-          <StyledButton id="prevButton" onClick={prevImage}>
-            <img src="Images/LeftPageButton.png" alt="Previous" />
-          </StyledButton>
-
-          <StyledButton id="nextButton" onClick={nextImage}>
-            <img src="Images/RightPageButton.png" alt="Next" />
-          </StyledButton>
-        </StyledButtonWrapper>
-      </StyledCarouselWrapper>
+        {ads.length > 0 && (
+          <>
+            <StyledImage
+              src={`https://wevent-api-nvcxh.run.goorm.site${ads[currentImageIndex].ad_image}`}
+              alt={`Ad ${ads[currentImageIndex].id}`}
+            />
+            <StyledButtonWrapper>
+              <StyledLeftButton id="prevButton" onClick={prevImage}>
+                <img src="Images/LeftPageButton.png" alt="Previous" />
+              </StyledLeftButton>
+              <StyledRightButton id="nextButton" onClick={nextImage}>
+                <img src="Images/RightPageButton.png" alt="Next" />
+              </StyledRightButton>{' '}
+            </StyledButtonWrapper>
+          </>
+        )}
+      </StyledCarousel>
 
       <ProgressBar>
-        {images.map((image, index) => (
-          <BulletPoint key={index} active={index === currentImageIndex} />
+        {ads.map((ad, index) => (
+          <BulletPoint
+            key={ad.id}
+            active={index === currentImageIndex}
+            onClick={() => handleBulletClick(index)}
+          />
         ))}
       </ProgressBar>
     </>
   );
-}
+};
+
+export default Carousel;

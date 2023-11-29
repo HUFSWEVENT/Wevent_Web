@@ -10,6 +10,7 @@ const PostCardContainerDiv = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   gap: 3rem;
   margin: auto;
+  margin-top: 15px;
 `;
 
 export default function PostCardContainer({
