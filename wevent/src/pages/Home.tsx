@@ -11,6 +11,8 @@ import DropDownButton from 'components/button/DropDownButton';
 import MoreEventButton from 'components/button/MoreEventButton';
 import styled from 'styled-components';
 import theme from 'styles/theme';
+import { Link } from 'react-router-dom';
+
 const TextContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -74,15 +76,16 @@ function Home() {
               const dday = calculateDday(deadline, date);
 
               return (
-                <PostCard
-                  key={id}
-                  event_image={event_image}
-                  dday={dday}
-                  title={title}
-                  sponsor_category={sponsor_category}
-                  host={host}
-                  views={views}
-                />
+                <Link key={id} to={`/search?id=${id}`}>
+                  <PostCard
+                    event_image={event_image}
+                    dday={dday}
+                    title={title}
+                    sponsor_category={sponsor_category}
+                    host={host}
+                    views={views}
+                  />
+                </Link>
               );
             },
           )}

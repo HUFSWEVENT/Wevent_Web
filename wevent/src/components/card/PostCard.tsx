@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 interface PostCardProps {
   event_image: string;
@@ -81,11 +82,13 @@ export default function PostCard({
   host,
   views,
 }: PostCardProps) {
+  const navigate = useNavigate();
+
   const baseUrl = 'https://wevent-api-nvcxh.run.goorm.site';
   const fullImageUrl = baseUrl + event_image;
   return (
     <OuterContainer>
-      <Image src={fullImageUrl} alt="img" />
+      <Image src={fullImageUrl} onClick={() => navigate(`/search`)} alt="img" />
       <TextContainer>
         <Text1>{dday}</Text1>
         <Text2>{title}</Text2>
