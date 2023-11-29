@@ -1,3 +1,4 @@
+import { createPlaceApi } from 'apis/event';
 import Header from 'components/Header/Header';
 import Form from 'components/form/Form';
 import React, { useCallback, useState } from 'react';
@@ -14,7 +15,7 @@ const CreateEventPage = () => {
     {
       title: '행사명',
       fieldType: 'input',
-      name: 'name',
+      name: 'title',
       placeholder: '행사 주제를 입력해주세요. (최대 20자)',
       required: true,
       disabled: false,
@@ -24,7 +25,7 @@ const CreateEventPage = () => {
     {
       title: '주최사명',
       fieldType: 'input',
-      name: 'boss',
+      name: 'host',
       placeholder: '주최사명을 입력해주세요.',
       required: true,
       disabled: false,
@@ -34,7 +35,7 @@ const CreateEventPage = () => {
     {
       title: '주최사 이메일',
       fieldType: 'input',
-      name: 'email',
+      name: 'host_email',
       placeholder: '협찬사와 컨택할 메일을 입력해주세요.',
       required: true,
       disabled: false,
@@ -44,7 +45,7 @@ const CreateEventPage = () => {
     {
       title: '행사 분야/유형',
       fieldType: 'phased-select',
-      name: ['kind', 'kind2'],
+      name: ['field', 'category'],
       placeholder: ['분야 선택', '세부 분야 선택'],
       required: true,
       disabled: false,
@@ -153,7 +154,7 @@ const CreateEventPage = () => {
     {
       title: '행사 장소',
       fieldType: 'input',
-      name: 'deadline',
+      name: 'detail_location',
       placeholder:
         '오프라인이라면 주소를, 온라인이라면 "온라인"이라고 입력해주세요',
       required: true,
@@ -164,7 +165,7 @@ const CreateEventPage = () => {
     {
       title: '협찬 종류',
       fieldType: 'select',
-      name: 'itemKind',
+      name: 'sponsor_category',
       placeholder: '협찬 종류 선택',
       required: true,
       disabled: false,
@@ -183,7 +184,7 @@ const CreateEventPage = () => {
     {
       title: '협찬 혜택',
       fieldType: 'text-area',
-      name: 'benefit',
+      name: 'sponsor_advantage',
       placeholder: '협찬사에 제공할 수 있는 혜택은 무엇인가요? (최대 1,000자)',
       required: true,
       disabled: false,
@@ -194,7 +195,7 @@ const CreateEventPage = () => {
     {
       title: '행사 대표 이미지',
       fieldType: 'image',
-      name: 'img',
+      name: 'event_image',
       placeholder: '썸네일 이미지를 등록해주세요. \n (640 * 320)',
       required: false,
       disabled: false,
@@ -234,7 +235,25 @@ const CreateEventPage = () => {
   ];
 
   const tempSaveHandler = useCallback(async () => {
-    console.log(methods.getValues());
+    const result: any = methods.getValues();
+    const formData = new FormData();
+    formData.append('title', result.title);
+    formData.append('host', result.host);
+    formData.append('host_email', result.host_email);
+    formData.append('field', result.field);
+    formData.append('category', result.category);
+    formData.append('size', result.size);
+    formData.append('introduce', result.introduce);
+    formData.append('date', result.date);
+    formData.append('detail_location', result.detail_location);
+    formData.append('deadline', result.deadline);
+    formData.append('sponsor_category', result.sponsor_category);
+    formData.append('sponsor_advantage', result.sponsor_advantage);
+    formData.append('event_image', thumnail);
+
+    const response = await createPlaceApi(formData);
+    // navigate(`/place/${response.data.id}`);
+    // console.log(methods.getValues());
   }, [methods]);
 
   return (
@@ -254,17 +273,15 @@ const CreateEventPage = () => {
             formClassName="bg-[#F8F8F8] rounded-3xl py-12 px-16"
             globalMethods={methods}
             formList={formList}
-            onSubmitEvent={function (result: object): void {
-              throw new Error('Function not implemented.');
-            }}
+            onSubmitEvent={tempSaveHandler}
             buttonInfo={{
               list: [
-                {
-                  content: '임시저장',
-                  clickEvent: tempSaveHandler,
-                  color: 'gray',
-                  width: '9rem',
-                },
+                // {
+                //   content: '임시저장',
+                //   clickEvent: tempSaveHandler,
+                //   color: 'gray',
+                //   width: '9rem',
+                // },
                 {
                   content: '행사등록',
                   clickEvent: () => {
