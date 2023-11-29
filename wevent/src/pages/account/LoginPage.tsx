@@ -9,10 +9,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const loginHandler = async (result: object) => {
     const response = await postLoginApi(result);
-    if (
-      response.status &&
-      (response.status === 200 || response.status === 201)
-    ) {
+    if (response && (response.status === 200 || response.status === 201)) {
       navigate('/');
     } else {
       alert('로그인에 실패했습니다.');
