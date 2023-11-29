@@ -6,6 +6,7 @@ interface BlueButtonProps {
   children: ReactNode;
   color?: 'blue' | 'gray';
   width?: string;
+  onClickEvent?: null | (() => void);
 }
 
 type buttonStyleType = {
@@ -35,9 +36,16 @@ export default function Button({
   children,
   color = 'blue',
   width = '8rem',
+  onClickEvent = null,
 }: BlueButtonProps) {
   return (
-    <StyledButton color={color} width={width}>
+    <StyledButton
+      color={color}
+      width={width}
+      onClick={() => {
+        onClickEvent && onClickEvent();
+      }}
+    >
       {children}
     </StyledButton>
   );

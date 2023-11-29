@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import SearchBar from './SearchBar';
 import Button from '../button/Button';
+import { useNavigate } from 'react-router-dom';
 
 const HeaderContainer = styled.div`
   height: 12rem;
@@ -34,6 +35,7 @@ const Signup = styled.button`
 `;
 
 const Header = () => {
+  const navigate = useNavigate();
   const handleSearch = (searchTerm: string) => {
     console.log('검색:', searchTerm);
   };
@@ -43,7 +45,13 @@ const Header = () => {
 
       <SearchBar onSearch={handleSearch} />
 
-      <Button>무료 행사 등록</Button>
+      <Button
+        onClickEvent={() => {
+          navigate('/create/event');
+        }}
+      >
+        무료 행사 등록
+      </Button>
       <Login>로그인</Login>
       <Signup>회원가입</Signup>
     </HeaderContainer>
