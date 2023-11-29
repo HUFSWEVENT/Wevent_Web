@@ -18,7 +18,7 @@ export const StyledTextField = styled(TextField)`
     .MuiInputBase-root {
       ${tw`border-[#72787E] rounded-[0] bg-white`}
       input {
-        ${tw`pl-10`}
+        padding-left: ${(props) => (props.label ? '2.5rem' : '1rem')};
       }
     }
   }

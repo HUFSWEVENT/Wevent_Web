@@ -29,7 +29,6 @@ const FormSelect = ({
   error,
   width = '100%',
 }: props) => {
-  console.log(menuItemList);
   const [value, setValue] = React.useState('');
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -38,16 +37,21 @@ const FormSelect = ({
 
   return (
     <StyledSelect width={width}>
-      {label && <InputLabel id="demo-simple-select-label">{label}</InputLabel>}
+      {label && <InputLabel>{label}</InputLabel>}
       <Select
-        labelId="demo-simple-select-label"
-        id="demo-simple-select"
+        displayEmpty
         value={value}
         label={label}
         onChange={handleChange}
-        placeholder={placeholder}
         required={required}
         disabled={disabled}
+        renderValue={(selected) => {
+          if (!selected) {
+            return <em className={`text-[#ADB3BA]`}>{placeholder}</em>;
+          }
+
+          return selected;
+        }}
         {...field}
       >
         {menuItemList.map((menu, index) => (

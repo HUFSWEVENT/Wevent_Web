@@ -42,6 +42,7 @@ export const FormInput = ({
         defaultValue={defaultValue}
         error={error}
         helperText={error?.text}
+        placeholder={label ? '' : placeholder}
         size="small"
         fullWidth
         InputProps={{
