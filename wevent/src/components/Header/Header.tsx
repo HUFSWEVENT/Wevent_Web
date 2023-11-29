@@ -52,8 +52,8 @@ const Header = () => {
       >
         무료 행사 등록
       </Button>
-      <Login>로그인</Login>
-      <Signup>회원가입</Signup>
+      <Login onClick={() => navigate('/account/login')}>로그인</Login>
+      <Signup onClick={() => navigate('/account/signup')}>회원가입</Signup>
     </HeaderContainer>
   );
 };
