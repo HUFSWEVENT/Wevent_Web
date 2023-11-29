@@ -1,3 +1,4 @@
+import Header from 'components/Header/Header';
 import Form from 'components/form/Form';
 import React, { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -237,38 +238,48 @@ const CreateEventPage = () => {
   }, [methods]);
 
   return (
-    <article className="px-12">
-      <section>title</section>
-      <section>
-        <Form
-          formClassName="bg-[#F8F8F8] rounded-3xl py-12 px-16"
-          globalMethods={methods}
-          formList={formList}
-          onSubmitEvent={function (result: object): void {
-            throw new Error('Function not implemented.');
-          }}
-          buttonInfo={{
-            list: [
-              {
-                content: '임시저장',
-                clickEvent: tempSaveHandler,
-                color: 'gray',
-                width: '9rem',
-              },
-              {
-                content: '행사등록',
-                clickEvent: () => {
-                  console.log('행사등록');
+    <>
+      <Header />
+      <article className="px-12 flex flex-col gap-12">
+        <section
+          className={`flex gap-4 items-end py-8 border-b border-solid border-b-black`}
+        >
+          <div className={`text-4xl font-bold`}>행사 등록</div>
+          <div className={`font-bold text-[#ADB3BA]`}>
+            5분만에 행사 개설하고 협찬 받으세요!
+          </div>
+        </section>
+        <section>
+          <Form
+            formClassName="bg-[#F8F8F8] rounded-3xl py-12 px-16"
+            globalMethods={methods}
+            formList={formList}
+            onSubmitEvent={function (result: object): void {
+              throw new Error('Function not implemented.');
+            }}
+            buttonInfo={{
+              list: [
+                {
+                  content: '임시저장',
+                  clickEvent: tempSaveHandler,
+                  color: 'gray',
+                  width: '9rem',
                 },
-                type: 'submit',
-                width: '9rem',
-              },
-            ],
-            direction: 'row',
-          }}
-        ></Form>
-      </section>
-    </article>
+                {
+                  content: '행사등록',
+                  clickEvent: () => {
+                    console.log('행사등록');
+                  },
+                  type: 'submit',
+                  width: '9rem',
+                },
+              ],
+              direction: 'row',
+            }}
+          ></Form>
+        </section>
+      </article>
+    </>
   );
 };
 
