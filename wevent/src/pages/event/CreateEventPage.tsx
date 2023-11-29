@@ -3,9 +3,11 @@ import Header from 'components/Header/Header';
 import Form from 'components/form/Form';
 import React, { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { formInfoType } from 'type/formType';
 
 const CreateEventPage = () => {
+  const navigate = useNavigate();
   const methods = useForm({
     defaultValues: {},
     mode: 'onChange',
@@ -252,8 +254,7 @@ const CreateEventPage = () => {
     formData.append('event_image', thumnail);
 
     const response = await createPlaceApi(formData);
-    // navigate(`/place/${response.data.id}`);
-    // console.log(methods.getValues());
+    navigate(`/`);
   }, [methods]);
 
   return (
